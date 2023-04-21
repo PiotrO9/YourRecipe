@@ -9,3 +9,12 @@
 html, body, #app {
   @include SquareSize(100%);
 }
+
+body {
+  background-color: $CremeBackground;
+}
+
+#app {
+  display: flex;
+  justify-content: center;
+}

@@ -29,12 +29,15 @@ export default defineComponent ({
     @import '@/GlobalStyles/variabless.scss';
     
     header {
-        width: 100%;
+        width: 98%;
         height: 6%;
         min-width: 400px;
         display: flex;
         justify-content: space-between;
         font-family: 'Sora';
+        background-color: white;
+        border-radius: 12px;
+        margin-top: 1.5rem;
     }
 
     .Header__logo {
@@ -62,13 +65,11 @@ export default defineComponent ({
         
         img {
             @include SquareSize(35px);
-            margin-top: 10px;
         }
 
         span {
             font-size: 20px;
-            margin-top: 20px;
-            word-spacing: 7px;
+            word-spacing: 5px;
         }
     }
 
