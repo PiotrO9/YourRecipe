@@ -13,7 +13,8 @@
             ["twaróg", "200g"],
             ["cebula", "1 sztuka"],
             ["masło", "2 łyżki"]
-        ]
+        ],
+        "ImagePath": "pierogi.jpg"
     },
     {
         "title": "Bigos",
@@ -31,7 +32,8 @@
             ["pieprz", "do smaku"],
             ["liść laurowy", "2 sztuki"],
             ["sól", "do smaku"]
-        ]
+        ],
+        "ImagePath": "bigos.jpg"
     },
     {
         "title": "Żurek",
@@ -49,7 +51,8 @@
             ["jajko", "1 sztuka"],
             ["sól", "do smaku"],
             ["pieprz", "do smaku"]
-        ]
+        ],
+        "ImagePath": "zur.jpg"
     },
     {
         "title": "Kotlet schabowy",
@@ -63,7 +66,8 @@
             ["sól", "do smaku"],
             ["pieprz", "do smaku"],
             ["olej", "do smażenia"]
-        ]
+        ],
+        "ImagePath": "schabowy.jpg"
     },
     {
         "title": "Sushi",
@@ -81,7 +85,8 @@
             ["wasabi", "do smaku"],
             ["sos sojowy", "do smaku"],
             ["imbir marynowany", "do smaku"]
-        ]
+        ],
+        "ImagePath": "sushi.jpg"
     },
     {
         "title": "Pizza capriciosa",
@@ -98,7 +103,8 @@
             ["pieczarki", "5-6 sztuk"],
             ["oliwki", "kilka sztuk"],
             ["oregano", "do smaku"]
-        ]
+        ],
+        "ImagePath": "pizza.jpg"
     },
     {
         "title": "Szarlotka",
@@ -113,7 +119,8 @@
             ["jabłka", "1 kg"],
             ["cynamon", "2 łyżeczki"],
             ["cukier", "3 łyżki"]
-        ]
+        ],
+        "ImagePath": "szarlotka.jpg"
     },
     {
         "title": "Ciasto bananowe",
@@ -129,6 +136,7 @@
             ["olej roślinny", "80 ml"],
             ["banany", "3 sztuki"],
             ["ekstrakt waniliowy", "1 łyżeczka"]
-        ]
+        ],
+        "ImagePath": "bananowe.jpg"
     }
 ]
