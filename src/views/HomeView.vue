@@ -15,9 +15,17 @@
           <button>Szukaj</button>
         </div>
       </div>
-      <main>
-
-      </main>
+        <div class="RecipesGrid">
+          <div class="test"></div>
+          <div class="test"></div>
+          <div class="test"></div>
+          <div class="test"></div>
+          <div class="test"></div>
+          <div class="test"></div>
+          <div class="test"></div>
+          <div class="test"></div>
+          <div class="test"></div>
+        </div>
     </main>
   </div>
 </template>
@@ -26,11 +34,22 @@
 import AppHeader from '@/components/Core-components/AppHeader.vue';
 import AppAside from '@/components/Core-components/AppAside.vue'
 import { defineComponent } from 'vue';
+import LocalRecipes from '@/datas/localRecipes.json'
+import type IRecipesGrid from '@/types/Interfaces/IRecipesGrid'
 
 export default defineComponent ({
   components: {
     AppHeader,
     AppAside
+  },
+  data(): IRecipesGrid {
+    return {
+      recipes: null
+    }
+  },
+  mounted() {
+    this.recipes = LocalRecipes
+    console.log(this.recipes)
   }
 })
 </script>
@@ -51,6 +70,7 @@ export default defineComponent ({
       height: 100%;
       display: flex;
       flex-direction: column;
+      align-items: center;
 
       .SearchContainer {
         height: 20%;
@@ -111,6 +131,20 @@ export default defineComponent ({
             font-size: 1.3rem;
             border-radius: $ComponentBorderRadius;
           }
+        }
+      }
+      
+      .RecipesGrid {
+        height: 80%;
+        width: 80%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 50px;
+        
+        .test {
+          width: 100px;
+          height: 100px;
+          background-color: red;
         }
       }
     }
