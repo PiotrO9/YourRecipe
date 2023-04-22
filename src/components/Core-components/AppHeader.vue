@@ -36,7 +36,7 @@ export default defineComponent ({
         justify-content: space-between;
         font-family: 'Sora';
         background-color: white;
-        border-radius: 12px;
+        border-radius: $ComponentBorderRadius;
         margin-top: 1.5rem;
     }
 
