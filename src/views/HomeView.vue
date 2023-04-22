@@ -15,16 +15,10 @@
           <button>Szukaj</button>
         </div>
       </div>
-        <div class="RecipesGrid">
-          <div class="test"></div>
-          <div class="test"></div>
-          <div class="test"></div>
-          <div class="test"></div>
-          <div class="test"></div>
-          <div class="test"></div>
-          <div class="test"></div>
-          <div class="test"></div>
-          <div class="test"></div>
+        <div v-if="recipes != null" class="RecipesGrid">
+          <Recipe v-for="(recipe, index) in recipes" 
+          :key="index"
+          :recipe="recipe"/>
         </div>
     </main>
   </div>
@@ -36,11 +30,13 @@ import AppAside from '@/components/Core-components/AppAside.vue'
 import { defineComponent } from 'vue';
 import LocalRecipes from '@/datas/localRecipes.json'
 import type IRecipesGrid from '@/types/Interfaces/IRecipesGrid'
+import Recipe from '@/components/Common-components/Recipe.vue'
 
 export default defineComponent ({
   components: {
     AppHeader,
-    AppAside
+    AppAside,
+    Recipe
   },
   data(): IRecipesGrid {
     return {
@@ -54,11 +50,12 @@ export default defineComponent ({
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '@/GlobalStyles/variabless.scss';
 
   .AppContent {
-    @include SquareSize(100%);
+    width: 100%;
+    height: 93%;
     display: flex;
     align-content: center;
     justify-content: flex-start;
@@ -140,6 +137,11 @@ export default defineComponent ({
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 50px;
+        overflow-x: scroll;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
         
         .test {
           width: 100px;
