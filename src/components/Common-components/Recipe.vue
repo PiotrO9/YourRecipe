@@ -13,6 +13,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { useDetailObject } from '@/stores/detailObject';
 
 interface IRecipeDatas {
   imageFullPath: undefined | string
@@ -24,17 +25,20 @@ export default defineComponent ({
       imageFullPath: undefined
     }
   },
+  computed: {
+    detailObject() {
+       return useDetailObject()
+    }
+  },
   props: ['recipe'],
   methods: {
     CombineFullImagePath() {
       this.imageFullPath = "/Recipe-images/" + this.recipe.ImagePath;
     },
     HandleTitleCLick() {
+      this.detailObject.setRecipeDetail(this.$props.recipe)
       this.$router.push({
-        name: "details",
-        params: {
-          test: "123"
-        }
+        name: "details"
       })
     }
   },
