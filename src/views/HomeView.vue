@@ -90,7 +90,7 @@ export default defineComponent ({
 
           svg {
             @include SquareSize(30px);
-            margin-top: 22px;
+            margin-top: 2%;
             margin-left: 10px
           }
 
@@ -133,7 +133,7 @@ export default defineComponent ({
       
       .RecipesGrid {
         height: 80%;
-        width: 80%;
+        width: 90%;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 50px;

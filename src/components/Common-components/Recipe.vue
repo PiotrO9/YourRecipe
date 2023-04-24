@@ -3,6 +3,11 @@
     <img v-if="recipe != undefined" 
       class="Recipe__image" 
       :src=imageFullPath />
+      <div class="Recipe__details">
+        <p class="Recipe__details--title">{{ recipe.title }}</p>
+        <p :class="{ longDescription: recipe.description.length > 300 }" 
+          class="Recipe__details--description">{{ recipe.description }}</p>
+      </div>
   </div>
 </template>
 
@@ -35,7 +40,8 @@ export default defineComponent ({
 @import "../../GlobalStyles/variabless.scss";
   .Recipe {
     width: 100%;
-    min-height: 400px;
+    height: max-content;
+    min-height: 500px;
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -45,6 +51,31 @@ export default defineComponent ({
       width: 100%;
       aspect-ratio: 16/9;
       border-radius: $ComponentBorderRadius;
+    }
+
+    &__details {
+      font-family: "Sora";
+      margin: 4px;
+      user-select: none;
+
+      .longDescription {
+        font-size: 1rem;
+      }
+      
+      &--title {
+        width: fit-content;
+        font-weight: 700;
+        font-size: 2rem;
+        margin: 6px 0px 4px 8px;
+        cursor: pointer;
+      }
+
+      &--description {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-left: 5px;
+        text-align: start;
+      }
     }
   }
 </style>
