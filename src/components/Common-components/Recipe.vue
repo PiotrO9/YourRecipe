@@ -4,7 +4,7 @@
       class="Recipe__image" 
       :src=imageFullPath />
       <div class="Recipe__details">
-        <p class="Recipe__details--title">{{ recipe.title }}</p>
+        <p class="Recipe__details--title" @click="HandleTitleCLick">{{ recipe.title }}</p>
         <p :class="{ longDescription: recipe.description.length > 300 }" 
           class="Recipe__details--description">{{ recipe.description }}</p>
       </div>
@@ -28,6 +28,14 @@ export default defineComponent ({
   methods: {
     CombineFullImagePath() {
       this.imageFullPath = "/Recipe-images/" + this.recipe.ImagePath;
+    },
+    HandleTitleCLick() {
+      this.$router.push({
+        name: "details",
+        params: {
+          test: "123"
+        }
+      })
     }
   },
   mounted() {
