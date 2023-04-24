@@ -1,8 +1,5 @@
 import { defineStore } from 'pinia'
-
-type RecipeDetailType = {
-    detailRecipe: null | object
-} 
+import type RecipeDetailType from '@/types/RecipeDetailType'
 
 export const useDetailObject = defineStore('detailObject', {
     state: (): RecipeDetailType => ({

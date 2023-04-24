@@ -34,17 +34,17 @@ export default defineComponent ({
         justify-content: flex-start;
         align-content: center;
         flex-direction: column;
+        gap: 2rem;
+        margin-top: 20px;
         background-color: white;
         border-radius: $ComponentBorderRadius;
-        margin-top: 20px;
         padding-top: 30px;
-        gap: 2rem;
 
         p {
+            text-align: center;
             font-family: "Sora";
             font-size: 2rem;
             font-weight: bold;
-            text-align: center;
             cursor: pointer;
          }
     }

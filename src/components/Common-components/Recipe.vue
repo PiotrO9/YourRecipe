@@ -66,8 +66,8 @@ export default defineComponent ({
     }
 
     &__details {
-      font-family: "Sora";
       margin: 4px;
+      font-family: "Sora";
       user-select: none;
 
       .longDescription {
@@ -76,17 +76,17 @@ export default defineComponent ({
       
       &--title {
         width: fit-content;
+        margin: 6px 0px 4px 8px;
         font-weight: 700;
         font-size: 2rem;
-        margin: 6px 0px 4px 8px;
         cursor: pointer;
       }
 
       &--description {
+        text-align: start;
+        margin-left: 5px;
         font-size: 1.2rem;
         font-weight: bold;
-        margin-left: 5px;
-        text-align: start;
       }
     }
   }
