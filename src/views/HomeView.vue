@@ -85,7 +85,8 @@ export default defineComponent ({
 
           svg {
             @include SquareSize(30px);
-            margin-top: 2%;
+            margin-top: auto;
+            margin-bottom: auto;
             margin-left: 10px
           }
 

@@ -14,6 +14,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { useDetailObject } from '@/stores/detailObject';
+import CombineFullImagePath from '@/utils/CombineFullImagePath';
 
 interface IRecipeDatas {
   imageFullPath: undefined | string
@@ -32,9 +33,6 @@ export default defineComponent ({
   },
   props: ['recipe'],
   methods: {
-    CombineFullImagePath() {
-      this.imageFullPath = "/Recipe-images/" + this.recipe.ImagePath;
-    },
     HandleTitleCLick() {
       this.detailObject.setRecipeDetail(this.$props.recipe)
       this.$router.push({
@@ -43,7 +41,7 @@ export default defineComponent ({
     }
   },
   mounted() {
-    this.CombineFullImagePath()
+    this.imageFullPath = CombineFullImagePath(this.recipe.ImagePath)
   }
 })
 </script>
