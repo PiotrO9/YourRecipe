@@ -21,7 +21,8 @@
         "difficulty": 3,
         "prepareTime": 180,
         "description": "Bigos to tradycyjne polskie danie, czyli gulasz z kiszonej kapusty, różnych mięs oraz dodatków, takich jak grzyby czy śliwki. To danie bardzo sycące i aromatyczne.",
-        "ingredients": [        ["kiszonka z kapusty", "1 kg"],
+        "ingredients": [        
+            ["kiszonka z kapusty", "1 kg"],
             ["kielbasa", "500g"],
             ["kiełbasa wiejska", "500g"],
             ["boczek wędzony", "200g"],
