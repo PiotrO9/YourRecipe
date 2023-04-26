@@ -37,6 +37,9 @@ import CombineFullImagePath from '@/utils/CombineFullImagePath';
 import Ingredient from '@/components/Common-components/ingredient.vue';
 
 export default defineComponent ({
+    components: {
+        Ingredient
+    },
     data(): {recipe: null | Recipe, imageFullPath: undefined | string} {
         return {
             recipe: null,
@@ -48,24 +51,18 @@ export default defineComponent ({
             return useDetailObject()
         }
     },
-    components: {
-        Ingredient
-    },
     mounted() {
         this.recipe = this.detailObject.$state.detailRecipe as Recipe
         this.imageFullPath = CombineFullImagePath(this.recipe.ImagePath)
         
-        const tmp: HTMLElement = document.getElementById("RecipeDatas")
+        const RecipeDatas: HTMLElement | null = document.getElementById("RecipeDatas")
 
         setTimeout(() => {
-            tmp.scrollIntoView({behavior: 'smooth'})
+            RecipeDatas?.scrollIntoView({behavior: 'smooth'})
         }, 1500);
 
-        const leftElements: HTMLCollection = document.querySelector(".left").children
-        const rightElements: HTMLCollection = document.querySelector(".right").children
-
-        console.log(123)
-        console.log(rightElements)
+        const leftElements: HTMLCollection | undefined = document.querySelector(".left")?.children
+        const rightElements: HTMLCollection | undefined = document.querySelector(".right")?.children
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
@@ -75,16 +72,18 @@ export default defineComponent ({
             })
         })
 
-        for(let i = 0; i < leftElements.length;i++) {
-            setTimeout(() => {
-                observer.observe(leftElements[i])
-            });
-        }
-
-        for(let i = 0; i < rightElements.length;i++) {
-            setTimeout(() => {
-                observer.observe(rightElements[i])
-            });
+        if(leftElements != undefined && rightElements != undefined) {   
+            for(let i = 0; i < leftElements.length;i++) {
+                setTimeout(() => {
+                    observer.observe(leftElements[i])
+                });
+            }
+            
+            for(let i = 0; i < rightElements.length;i++) {
+                setTimeout(() => {
+                    observer.observe(rightElements[i])
+                });
+            }
         }
     }
 })
@@ -112,24 +111,21 @@ export default defineComponent ({
         position: absolute;
         top: 5rem;
         left: 8rem;
-        user-select: none;
-        font-size: 8rem;
         color: $CremeBackground;
+        font-size: 8rem;
         font-family: "Kaushan Script";
+        user-select: none;
         text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-
         animation: slide-in 2s forwards;
     }
 
     .RecipeDatas {
+        @include flex-center;
         width: 100vw;
         height: 100vh;
-        background-color: $CremeBackground;
         padding-top: -10px;
-        display: flex;
-        align-content: center;
-        justify-content: center;
-
+        background-color: $CremeBackground;
+        
         &__content {
             width: 70%;
             height: 100%;
@@ -137,19 +133,19 @@ export default defineComponent ({
             flex-direction: column;
 
             p {
+                margin-top: 20px;
                 font-size: 6rem;
                 font-weight: 600;
                 font-family: "Sora";
-                margin-top: 20px;
             }
 
             hr {
                 width: 100%;
                 height: 4px;
-                background-color: black;
                 align-self: flex-start;
                 margin-top: 1rem;
                 margin-bottom: 2rem;
+                background-color: black;
             }
 
             &--info {
@@ -174,16 +170,15 @@ export default defineComponent ({
                         margin-bottom: 15px;
                     
                         &:nth-child(1) {
+                            text-align: start;
                             font-size: 1.6rem;
                             word-spacing: 0.7rem;
                             letter-spacing: 1px;
-                            text-align: start;
                         }
 
                         &:nth-child(2) {
                             font-size: 1.8rem;
                         }
-
                     }
 
                     div {
@@ -192,10 +187,8 @@ export default defineComponent ({
                         align-items: center;
 
                         p {
+                            @include flex-center;
                             height: fit-content;
-                            display: flex;
-                            justify-content: center;
-                            align-content: center;
                             margin-top: 1rem;
                         }
 
