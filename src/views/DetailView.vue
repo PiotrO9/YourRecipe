@@ -16,7 +16,12 @@
                     </div>
                 </section>
                 <section class="right">
-                    
+                    <p>Składniki</p>
+                    <div class="Ingredients">
+                        <Ingredient v-for="(ingredient, index) in recipe?.ingredients" 
+                        :key="index"
+                        :ingredients="ingredient"/>
+                    </div>
                 </section>
             </div>
         </div>
@@ -29,6 +34,7 @@ import { defineComponent } from 'vue';
 import { useDetailObject } from '@/stores/detailObject';
 import type Recipe from '@/types/Recipe';
 import CombineFullImagePath from '@/utils/CombineFullImagePath';
+import Ingredient from '@/components/Common-components/ingredient.vue';
 
 export default defineComponent ({
     data(): {recipe: null | Recipe, imageFullPath: undefined | string} {
@@ -42,6 +48,9 @@ export default defineComponent ({
             return useDetailObject()
         }
     },
+    components: {
+        Ingredient
+    },
     mounted() {
         this.recipe = this.detailObject.$state.detailRecipe as Recipe
         this.imageFullPath = CombineFullImagePath(this.recipe.ImagePath)
@@ -51,11 +60,37 @@ export default defineComponent ({
         setTimeout(() => {
             tmp.scrollIntoView({behavior: 'smooth'})
         }, 1500);
+
+        const leftElements: HTMLCollection = document.querySelector(".left").children
+        const rightElements: HTMLCollection = document.querySelector(".right").children
+
+        console.log(123)
+        console.log(rightElements)
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('show')
+                }
+            })
+        })
+
+        for(let i = 0; i < leftElements.length;i++) {
+            setTimeout(() => {
+                observer.observe(leftElements[i])
+            });
+        }
+
+        for(let i = 0; i < rightElements.length;i++) {
+            setTimeout(() => {
+                observer.observe(rightElements[i])
+            });
+        }
     }
 })
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 @import '@/GlobalStyles/variabless.scss';
 
 .detailView {
@@ -79,8 +114,8 @@ export default defineComponent ({
         left: 8rem;
         user-select: none;
         font-size: 8rem;
-        color: white;
-        font-family: "Sora";
+        color: $CremeBackground;
+        font-family: "Kaushan Script";
         text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 
         animation: slide-in 2s forwards;
@@ -103,8 +138,9 @@ export default defineComponent ({
 
             p {
                 font-size: 6rem;
-                font-weight: bold;
+                font-weight: 600;
                 font-family: "Sora";
+                margin-top: 20px;
             }
 
             hr {
@@ -125,6 +161,13 @@ export default defineComponent ({
                 .left {
                     width: 40%;
                     height: 100%;
+                    margin-left: 20px;
+
+                    * {
+                        &.show {
+                            animation: show-up-left 2s forwards;
+                        }
+                    }
 
                     p {
                         font-size: 1.4rem;
@@ -144,35 +187,46 @@ export default defineComponent ({
                     }
 
                     div {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+
+                        p {
+                            height: fit-content;
                             display: flex;
-                            flex-direction: row;
-                            align-items: center;
-
-                            p {
-                                height: fit-content;
-                                display: flex;
-                                justify-content: center;
-                                align-content: center;
-                                margin-top: 1rem;
-                            }
-
-                            svg {
-                                margin-top: auto;
-                                margin-bottom: auto;
-
-                                &:nth-child(2) {
-                                    margin-left: 15px;
-                                }
-
-                                margin-left: 2px;
-                                margin-right: 2px;
-                            }
+                            justify-content: center;
+                            align-content: center;
+                            margin-top: 1rem;
                         }
+
+                        svg {
+                            margin-top: auto;
+                            margin-bottom: auto;
+
+                            &:nth-child(2) {
+                                margin-left: 15px;
+                            }
+
+                            margin-left: 2px;
+                            margin-right: 2px;
+                        }
+                    }
                 }
                 
                 .right {
                     width: 60%;
                     height: 100%;
+                    margin-left: 20px;
+
+                    * {
+                        &.show {
+                            animation: show-up-right 2s forwards;
+                        }
+                    }
+
+                    p {
+                        font-size: 4rem;
+                    }
                 }
             }
         }
@@ -185,6 +239,28 @@ export default defineComponent ({
         }
         100% {
             transform: translateY(0px);
+            opacity: 1;
+        }
+    }
+
+    @keyframes show-up-left {
+        0% {
+            transform: translateX(-100vw);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes show-up-right {
+        0% {
+            transform: translateX(100vw);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
             opacity: 1;
         }
     }
