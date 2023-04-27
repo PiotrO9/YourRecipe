@@ -8,8 +8,17 @@
             Przepisy
         </span>
     </div>
+    <img src="../../../public/cook-book.png" 
+        alt="Recipe book"
+        @click="ChangeMenuVisibility">
+    <div class="Options">
+        <menu :class="{ showMenu: showMenu }">
+            <p>Wszystkie przepisy</p>
+            <p>Ulubione</p>
+            <p>Dodaj przepis</p>
+        </menu>
+    </div>
     <div class="Header__name">
-        <img src="../../../public/cook-book.png" alt="Recipe book">
         <span>
             Piotr Ostrowski
         </span>
@@ -21,7 +30,19 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent ({
-    
+    data() {
+        return {
+            showMenu: false
+        }
+    },
+    methods: {
+        ChangeMenuVisibility() {
+            this.showMenu = !this.showMenu
+        }
+    },
+    mounted() {
+        
+    }
 })
 </script>
 
@@ -33,7 +54,8 @@ export default defineComponent ({
         height: 6%;
         min-width: 400px;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
+        align-items: center;
         font-family: 'Sora';
         background-color: white;
         border-radius: $ComponentBorderRadius;
@@ -51,15 +73,64 @@ export default defineComponent ({
             font-weight: bold;
             
             &:first-child {
-                color: red;
+                color: $Orange;
                 font-size: 22px;
             }
         }
     }
 
-    .Header__name {
+    img {
+        width: 40px;
+        height: 40px;
+        margin-left: 20px;
+        margin-right: 20px;
+        cursor: pointer;
+    }
+
+    .Options {
+        width: 70%;
+        height: 50px;
+        position: relative;
+        z-index: 0;
+        overflow: hidden;
         display: flex;
         align-items: center;
+
+        menu {
+            position: absolute;
+            z-index: -2;
+            display: flex;
+            gap: 20px;
+            
+            &.showMenu {
+                animation: options-slide-in 1s forwards;
+            }
+
+            &:not(.showMenu) {
+                animation: options-slide-out 1s forwards;
+            }
+
+            p {
+                font-size: 1.5rem;
+                font-family: "Sora";
+                font-weight: bold;
+                background-color: $CremeBackground;
+                padding: 6px;
+                border-radius: $ComponentBorderRadius;
+
+                &:hover {
+                    color: $Orange;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .Header__name {
+        width: 20%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
         margin-right: 15px;
         gap: 10px;
         
@@ -72,5 +143,23 @@ export default defineComponent ({
             word-spacing: 5px;
         }
     }
+
+@keyframes options-slide-in {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes options-slide-out {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
 
 </style>
