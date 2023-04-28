@@ -8,7 +8,7 @@
             Przepisy
         </span>
     </div>
-    <img src="../../../public/cook-book.png" 
+    <img src="/cook-book.png" 
         alt="Recipe book"
         @click="ChangeMenuVisibility">
     <div class="Options">
@@ -41,7 +41,12 @@ export default defineComponent ({
         }
     },
     mounted() {
-        
+        const menu: HTMLElement = document.querySelector("menu")
+
+        menu.classList.add("invisible")
+        setTimeout(() => {
+            menu.classList.remove("invisible")
+        }, 1000);
     }
 })
 </script>
@@ -101,7 +106,12 @@ export default defineComponent ({
             z-index: -2;
             display: flex;
             gap: 20px;
+            transform: translateX(-120px);
             
+            &.invisible {
+                opacity: 0;
+            }
+
             &.showMenu {
                 animation: options-slide-in 1s forwards;
             }
