@@ -10,7 +10,8 @@
     </div>
     <img src="/cook-book.png" 
         alt="Recipe book"
-        @click="ChangeMenuVisibility">
+        @click="ChangeMenuVisibility"
+        :class="{ noticer: !showMenu }">
     <div class="Options">
         <menu :class="{ showMenu: showMenu }">
             <p>Wszystkie przepisy</p>
@@ -76,6 +77,7 @@ export default defineComponent ({
 
         span {
             font-weight: bold;
+            user-select: none;
             
             &:first-child {
                 color: $Orange;
@@ -90,6 +92,10 @@ export default defineComponent ({
         margin-left: 20px;
         margin-right: 20px;
         cursor: pointer;
+
+        &.noticer {
+            animation: notice 5s infinite;
+        }
     }
 
     .Options {
@@ -102,6 +108,7 @@ export default defineComponent ({
         align-items: center;
 
         menu {
+            max-height: 50px;
             position: absolute;
             z-index: -2;
             display: flex;
@@ -121,7 +128,7 @@ export default defineComponent ({
             }
 
             p {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
                 font-family: "Sora";
                 font-weight: bold;
                 background-color: $CremeBackground;
@@ -151,6 +158,7 @@ export default defineComponent ({
         span {
             font-size: 20px;
             word-spacing: 5px;
+            user-select: none;
         }
     }
 
@@ -172,4 +180,22 @@ export default defineComponent ({
     }
 }
 
+@keyframes notice {
+    40% {
+        transform: translateX(0);
+        rotate: 0;
+    }
+    50% {
+        transform: translateX(10%);
+        rotate: 30deg;
+    }
+    60% {
+        transform: translateX(0);
+        rotate: 0;
+    }
+    70% {
+        transform: translateX(-10%);
+        rotate: -30deg;
+    }
+}
 </style>

@@ -1,7 +1,6 @@
 <template>
   <AppHeader />
   <div class="AppContent">
-    <AppAside />
     <main>
       <div class="SearchContainer">
         <div class="SearchContainer__TextInput">
@@ -62,7 +61,7 @@ export default defineComponent ({
     padding-right: 20px;
 
     main {
-      width: 80%;
+      width: 100%;
       height: 100%;
       display: flex;
       align-items: center;
@@ -120,6 +119,12 @@ export default defineComponent ({
             font-family: "Sora";
             font-weight: bold;
             font-size: 1.3rem;
+            cursor: pointer;
+            user-select: none;
+
+            &:hover {
+              color: $Orange;
+            }
           }
         }
       }
