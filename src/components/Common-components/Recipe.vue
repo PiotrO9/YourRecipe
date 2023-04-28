@@ -1,5 +1,6 @@
 <template>
   <div class="Recipe">
+    <FavouriteIcon />
     <img v-if="recipe != undefined" 
       class="Recipe__image" 
       :src=imageFullPath />
@@ -15,12 +16,16 @@
 import { defineComponent } from 'vue';
 import { useDetailObject } from '@/stores/detailObject';
 import CombineFullImagePath from '@/utils/CombineFullImagePath';
+import FavouriteIcon from "@/components/Common-components/FavouriteIcon.vue"
 
 interface IRecipeDatas {
   imageFullPath: undefined | string
 }
 
 export default defineComponent ({
+  components: {
+    FavouriteIcon
+  },
   data(): IRecipeDatas {
     return {
       imageFullPath: undefined
@@ -54,6 +59,7 @@ export default defineComponent ({
     min-height: 500px;
     display: flex;
     flex-direction: column;
+    position: relative;
     background-color: white;
     border-radius: $ComponentBorderRadius;
 
