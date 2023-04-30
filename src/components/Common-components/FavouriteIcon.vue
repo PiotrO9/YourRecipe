@@ -21,10 +21,18 @@ export default defineComponent({
             this.IconState = !this.IconState
 
             const ClickedButton: HTMLElement = this.$el.querySelector("button")
-            ClickedButton.classList.add("favourite")
+
+            if(this.IconState) {
+                ClickedButton.classList.add("Active-favourite")
+            }
+            else {
+                ClickedButton.classList.add("Deactive-favourite")
+            }
+
 
             setTimeout(() => {
-                ClickedButton.classList.remove("favourite")
+                ClickedButton.classList.remove("Active-favourite")
+                ClickedButton.classList.remove("Deactive-favourite")
             }, 1000);
         }
     }
@@ -44,8 +52,12 @@ export default defineComponent({
         color: red;
         cursor: pointer;
 
-        &.favourite{
+        &.Active-favourite{
             animation: Active-favourite 1s forwards;
+        }
+
+        &.Deactive-favourite {
+            animation: Deactive-favourite 0.5s forwards;
         }
    
         svg {
@@ -58,6 +70,21 @@ export default defineComponent({
 @keyframes Active-favourite {
     50% {
         transform: scale(150%);
+    }
+    100% {
+        transform: scale(100%);
+    }
+}
+
+@keyframes Deactive-favourite {
+    0% {
+        transform: scale(75%);
+    }
+    30% {
+        transform: rotate(-30deg);
+    }
+    65% {
+        transform: rotate(30deg);
     }
     100% {
         transform: scale(100%);
