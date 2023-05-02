@@ -25,11 +25,11 @@
           </div>
         </div>
       </div>
-        <!-- <div v-if="recipes != null" class="RecipesGrid">
+        <div v-if="recipes != null" class="RecipesGrid">
           <Recipe v-for="(recipe, index) in recipes" 
           :key="index"
           :recipe="recipe"/>
-        </div> -->
+        </div>
     </main>
   </div>
 </template>
@@ -61,7 +61,6 @@ export default defineComponent ({
 
 <style lang="scss" scoped>
 @import '@/GlobalStyles/variabless.scss';
-
   .AppContent {
     width: 100%;
     height: 93%;
@@ -72,23 +71,24 @@ export default defineComponent ({
     padding-right: 20px;
 
     main {
-      width: 100%;
-      height: 100%;
+      @include SquareSize(100%);
       display: flex;
       align-items: center;
       flex-direction: column;
+      overflow-x: scroll;
 
       .Heading {
         width: 90%;
-        height: 50%;
+        height: 100%;
+        min-height: 500px;
         display: flex;
-        background-color: $LightOrange;
         margin-top: 2rem;
+        background-color: $LightOrange;
         border-radius:  20px;
 
         &__left {
-          height: 100%;
           width: 30%;
+          height: 100%;
           display: flex;
           flex-direction: column;
           font-family: "Sora";
@@ -123,8 +123,7 @@ export default defineComponent ({
             margin-top: 10%;
 
             &__input {
-              width: 100%;
-              height: 100%;
+              @include SquareSize(100%);
               max-height: 50px;
               display: flex;
               flex-direction: row;
@@ -150,17 +149,17 @@ export default defineComponent ({
 
               button {
                 min-height: 40px;
-                outline: none;
-                border: none;
+                margin-left: auto;
+                margin-right: max(5%, 20px);
                 padding-left: 1rem;
                 padding-right: 1rem;
+                outline: none;
+                border: none;
                 background: $CremeBackground;
                 border-radius: $ComponentBorderRadius;
                 font-family: "Sora";
                 font-weight: bold;
                 font-size: 100%;
-                margin-left: auto;
-                margin-right: max(5%, 20px);
 
                 &:hover {
                   cursor: pointer;
@@ -178,11 +177,7 @@ export default defineComponent ({
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 50px;
-        overflow-x: scroll;
-
-        &::-webkit-scrollbar {
-          display: none;
-        }
+        margin-top: 2rem;
         
         .test {
           @include SquareSize(100%);
