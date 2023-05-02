@@ -2,23 +2,34 @@
   <AppHeader />
   <div class="AppContent">
     <main>
-      <div class="SearchContainer">
-        <div class="SearchContainer__TextInput">
-          <fa icon="fa-solid fa-magnifying-glass" />
-          <input type="text" 
-          id="SearchInput" 
-          placeholder="Wpisz czego szukasz..."
-          autocomplete="none">
+      <div class="Heading">
+        <div class="Heading__left">
+          <h1>Twoje ulubione posiłki</h1>
+          <p>Przygotowane specjalnie dla ciebie ze starannie dobranych receptur i składników</p>
         </div>
-        <div class="SearchContainer__Submit">
-          <button>Szukaj</button>
+        <div class="Heading__right">
+          <div class="Heading__right--searchContainer">
+            <div class="Heading__right--searchContainer__input">
+              <fa icon="fa-solid fa-magnifying-glass" />
+              <input type="text" 
+                id="SearchInput" 
+                placeholder="Wpisz czego szukasz..."
+                autocomplete="none">
+                <button>
+                  Wyszukaj
+                </button>
+            </div>
+          </div>
+          <div class="Heading__right--backgroundImages">
+
+          </div>
         </div>
       </div>
-        <div v-if="recipes != null" class="RecipesGrid">
+        <!-- <div v-if="recipes != null" class="RecipesGrid">
           <Recipe v-for="(recipe, index) in recipes" 
           :key="index"
           :recipe="recipe"/>
-        </div>
+        </div> -->
     </main>
   </div>
 </template>
@@ -67,63 +78,95 @@ export default defineComponent ({
       align-items: center;
       flex-direction: column;
 
-      .SearchContainer {
-        @include flex-center;
-        width: 100%;
-        height: 20%;
-        flex-direction: row;
+      .Heading {
+        width: 90%;
+        height: 50%;
+        display: flex;
+        background-color: $LightOrange;
+        margin-top: 2rem;
+        border-radius:  20px;
 
-        &__TextInput {
-          @include flex-center;
-          width: 75%;
-          height: 40%;
-          flex-direction: row;
-          gap: 10px;
-          background-color: white;
-          border-radius: $ComponentBorderRadius;
+        &__left {
+          height: 100%;
+          width: 30%;
+          display: flex;
+          flex-direction: column;
+          font-family: "Sora";
+          margin-left: 3rem;
 
-          svg {
-            @include SquareSize(30px);
+          h1 {
             margin-top: auto;
-            margin-bottom: auto;
-            margin-left: 10px
+            margin-bottom: 3rem;
+            font-size: 3.5rem;
           }
 
-          input {
-            @include SquareSize(100%);
-            outline: none;
-            border: none;
-            background-color: white;
-            color: black;
-            font-size: 20px;
-            font-weight: bold;
-            font-family: "Sora";
+          p {
+            margin-bottom: auto;
+            font-size: 2rem;
           }
         }
 
-        &__Submit {
-          @include flex-center;
-          width: 15%;
-          height: 40%;
-          background-color: white;
-          border-top-right-radius: $ComponentBorderRadius;
-          border-bottom-right-radius: $ComponentBorderRadius;
+        &__right {
+          width: 70%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
 
-          button {
-            min-width: 120px;
-            min-height: 45px;
-            background-color: $CremeBackground;
-            outline: none;
-            border: none;
+          &--searchContainer {
+            width: 70%;
+            height: 15%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background-color: white;
             border-radius: $ComponentBorderRadius;
-            font-family: "Sora";
-            font-weight: bold;
-            font-size: 1.3rem;
-            cursor: pointer;
-            user-select: none;
+            margin-top: 10%;
 
-            &:hover {
-              color: $Orange;
+            &__input {
+              width: 100%;
+              height: 100%;
+              max-height: 50px;
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: flex-start;
+              gap: 10px;
+
+              svg {
+                height: 1.5rem;
+                margin-left: 1rem;
+              }
+
+              input {
+                height: 100%;
+                outline: none;
+                border: none;
+                background-color: white;
+                color: black;
+                font-size: 100%;
+                font-family: "Sora";
+                font-weight: bold;
+              }
+
+              button {
+                min-height: 40px;
+                outline: none;
+                border: none;
+                padding-left: 1rem;
+                padding-right: 1rem;
+                background: $CremeBackground;
+                border-radius: $ComponentBorderRadius;
+                font-family: "Sora";
+                font-weight: bold;
+                font-size: 100%;
+                margin-left: auto;
+                margin-right: max(5%, 20px);
+
+                &:hover {
+                  cursor: pointer;
+                  color: $LightOrange;
+                }
+              }
             }
           }
         }
