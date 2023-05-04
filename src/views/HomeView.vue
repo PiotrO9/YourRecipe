@@ -21,7 +21,7 @@
             </div>
           </div>
           <div class="Heading__right--backgroundImages">
-
+            <img src="/Background-images/Pizza-background.png" alt="Bowl background image">
           </div>
         </div>
       </div>
@@ -50,7 +50,8 @@ export default defineComponent ({
   },
   data(): IRecipesGrid {
     return {
-      recipes: null
+      recipes: null,
+      path: "/Background-images/Bowl-background.png"
     }
   },
   mounted() {
@@ -85,6 +86,7 @@ export default defineComponent ({
         margin-top: 2rem;
         background-color: $LightOrange;
         border-radius:  20px;
+        overflow: hidden;
 
         &__left {
           width: 30%;
@@ -111,6 +113,7 @@ export default defineComponent ({
           height: 100%;
           display: flex;
           justify-content: center;
+          position: relative;
 
           &--searchContainer {
             width: 70%;
@@ -121,6 +124,7 @@ export default defineComponent ({
             background-color: white;
             border-radius: $ComponentBorderRadius;
             margin-top: 10%;
+            z-index: 1;
 
             &__input {
               @include SquareSize(100%);
@@ -168,6 +172,24 @@ export default defineComponent ({
               }
             }
           }
+
+          &--backgroundImages {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            img {
+              position: absolute;
+              aspect-ratio: 16/9;
+              height: 150px;
+              top: 60px;
+              left: 40px;
+              overflow: hidden;
+              transform: rotate(-10deg);
+              animation: firstBackgroundItemMove 2s forwards, firstBackgroundItemSpin 8s infinite;
+              animation-delay: 0s, 2s;
+            }
+          }
         }
       }
       
@@ -184,6 +206,24 @@ export default defineComponent ({
           background-color: red;
         }
       }
+    }
+  }
+
+  @keyframes firstBackgroundItemMove {
+    0% {
+      transform: translate3d(-80px, -150px, 0px) rotate(20deg);
+    }
+    100% {
+      transform: translate3d(0px, 0px, 0px) rotate(-10deg);
+    }
+  }
+
+  @keyframes firstBackgroundItemSpin {
+    0% {
+      transform: rotate(-10deg);
+    }
+    100% {
+      transform: rotate(30deg);
     }
   }
 </style>
