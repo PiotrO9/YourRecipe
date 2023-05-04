@@ -186,7 +186,7 @@ export default defineComponent ({
               left: 40px;
               overflow: hidden;
               transform: rotate(-10deg);
-              animation: firstBackgroundItemMove 2s forwards, firstBackgroundItemSpin 8s infinite;
+              animation: firstBackgroundItemMove 2s forwards, firstBackgroundItemSpin 10s infinite;
               animation-delay: 0s, 2s;
             }
           }
@@ -220,10 +220,13 @@ export default defineComponent ({
 
   @keyframes firstBackgroundItemSpin {
     0% {
-      transform: rotate(-10deg);
+      transform:  rotate(-10deg);
+    }
+    50% {
+      transform: translate3d(20px, 10px, 0px) rotate(15deg);
     }
     100% {
-      transform: rotate(30deg);
+      transform: translate3d(0px, 0px, 0px) rotate(-10deg);
     }
   }
 </style>
