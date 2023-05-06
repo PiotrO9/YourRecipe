@@ -32,15 +32,16 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { useDetailObject } from '@/stores/detailObject';
-import type Recipe from '@/types/Recipe';
+import type DetailViewDataTypes from '@/types/ViewsDataTypes/DetailViewDataTypes';
 import CombineFullImagePath from '@/utils/CombineFullImagePath';
+import type Recipe from '@/types/Recipe';
 import Ingredient from '@/components/Common-components/ingredient.vue';
 
 export default defineComponent ({
     components: {
         Ingredient
     },
-    data(): {recipe: null | Recipe, imageFullPath: undefined | string} {
+    data(): DetailViewDataTypes {
         return {
             recipe: null,
             imageFullPath: undefined

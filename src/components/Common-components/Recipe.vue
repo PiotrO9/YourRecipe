@@ -17,16 +17,13 @@ import { defineComponent } from 'vue';
 import { useDetailObject } from '@/stores/detailObject';
 import CombineFullImagePath from '@/utils/CombineFullImagePath';
 import FavouriteIcon from "@/components/Common-components/FavouriteIcon.vue"
-
-interface IRecipeDatas {
-  imageFullPath: undefined | string
-}
+import type RecipeDataTypes from "@/types/RecipeDataTypes"
 
 export default defineComponent ({
   components: {
     FavouriteIcon
   },
-  data(): IRecipeDatas {
+  data(): RecipeDataTypes {
     return {
       imageFullPath: undefined
     }

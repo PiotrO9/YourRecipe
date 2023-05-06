@@ -37,12 +37,12 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from 'vue';
 import AppHeader from '@/components/Core-components/AppHeader.vue';
 import AppAside from '@/components/Core-components/AppAside.vue'
-import { defineComponent } from 'vue';
 import LocalRecipes from '@/datas/localRecipes.json'
-import type IRecipesGrid from '@/types/Interfaces/IRecipesGrid'
 import Recipe from '@/components/Common-components/Recipe.vue'
+import type HomeViewDataTypes from '@/types/ViewsDataTypes/HomeViewDataTypes';
 
 export default defineComponent ({
   components: {
@@ -50,7 +50,7 @@ export default defineComponent ({
     AppAside,
     Recipe
   },
-  data(): IRecipesGrid {
+  data(): HomeViewDataTypes {
     return {
       recipes: null,
     }

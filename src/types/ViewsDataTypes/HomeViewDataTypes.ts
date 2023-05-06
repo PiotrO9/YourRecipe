@@ -1,7 +1,7 @@
 import type Recipe from "../Recipe"
 
-interface IRecipesGrid {
+interface HomeViewDataTypes {
     recipes: null | Array<Recipe>
 }
 
-export default IRecipesGrid
+export default HomeViewDataTypes
