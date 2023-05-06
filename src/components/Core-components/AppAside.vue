@@ -28,17 +28,17 @@ export default defineComponent ({
 @import '../../GlobalStyles/variabless.scss';
 
     aside {
-        width: 20%;
         height: 95%;
+        width: 20%;
         display: flex;
         justify-content: flex-start;
         align-content: center;
         flex-direction: column;
-        gap: 2rem;
         margin-top: 20px;
+        padding-top: 30px;
+        gap: 2rem;
         background-color: white;
         border-radius: $ComponentBorderRadius;
-        padding-top: 30px;
 
         p {
             text-align: center;

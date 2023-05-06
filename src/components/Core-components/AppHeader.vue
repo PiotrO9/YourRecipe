@@ -14,9 +14,9 @@
         :class="{ noticer: !showMenu }">
     <div class="Options">
         <menu :class="{ showMenu: showMenu }">
-            <p>Wszystkie przepisy</p>
-            <p>Ulubione</p>
-            <p>Dodaj przepis</p>
+            <p @click="AllRecipesClick">Wszystkie przepisy</p>
+            <p @click="FavouriteRecipesClick">Ulubione</p>
+            <p @click="AddRecipeClick">Dodaj przepis</p>
         </menu>
     </div>
     <div class="Header__name">
@@ -39,14 +39,23 @@ export default defineComponent ({
     methods: {
         ChangeMenuVisibility() {
             this.showMenu = !this.showMenu
+        },
+        AllRecipesClick() {
+            this.$router.push({ name: "home" })
+        },
+        FavouriteRecipesClick() {
+            console.log("favourites")
+        },
+        AddRecipeClick() {
+            this.$router.push({ name: "adding" })
         }
     },
     mounted() {
-        const menu: HTMLElement = document.querySelector("menu")
+        const menu: HTMLElement | null = document.querySelector("menu")
 
-        menu.classList.add("invisible")
+        menu?.classList.add("invisible")
         setTimeout(() => {
-            menu.classList.remove("invisible")
+            menu?.classList.remove("invisible")
         }, 1000);
     }
 })
@@ -87,14 +96,13 @@ export default defineComponent ({
     }
 
     img {
-        width: 40px;
-        height: 40px;
+        @include SquareSize(40px);
         margin-left: 20px;
         margin-right: 20px;
         cursor: pointer;
 
         &.noticer {
-            animation: notice 5s infinite;
+            animation: Notice 4s infinite;
         }
     }
 
@@ -109,9 +117,9 @@ export default defineComponent ({
 
         menu {
             max-height: 50px;
+            display: flex;
             position: absolute;
             z-index: -2;
-            display: flex;
             gap: 20px;
             transform: translateX(-120px);
             
@@ -120,20 +128,20 @@ export default defineComponent ({
             }
 
             &.showMenu {
-                animation: options-slide-in 1s forwards;
+                animation: Options-slide-in 1s forwards;
             }
 
             &:not(.showMenu) {
-                animation: options-slide-out 1s forwards;
+                animation: Options-slide-out 1s forwards;
             }
 
             p {
-                font-size: 1.2rem;
-                font-family: "Sora";
-                font-weight: bold;
                 background-color: $CremeBackground;
                 padding: 6px;
                 border-radius: $ComponentBorderRadius;
+                font-size: 1.2rem;
+                font-family: "Sora";
+                font-weight: bold;
 
                 &:hover {
                     color: $Orange;
@@ -162,7 +170,7 @@ export default defineComponent ({
         }
     }
 
-@keyframes options-slide-in {
+@keyframes Options-slide-in {
     0% {
         transform: translateX(-100%);
     }
@@ -171,7 +179,7 @@ export default defineComponent ({
     }
 }
 
-@keyframes options-slide-out {
+@keyframes Options-slide-out {
     0% {
         transform: translateX(0%);
     }
@@ -180,22 +188,15 @@ export default defineComponent ({
     }
 }
 
-@keyframes notice {
-    40% {
-        transform: translateX(0);
-        rotate: 0;
+@keyframes Notice {
+    20%, 65% {
+        transform: translateX(0) rotate(0deg);
     }
-    50% {
-        transform: translateX(10%);
-        rotate: 30deg;
+    45% {
+        transform: translateX(10%) rotate(30deg);
     }
-    60% {
-        transform: translateX(0);
-        rotate: 0;
-    }
-    70% {
-        transform: translateX(-10%);
-        rotate: -30deg;
+    80% {
+        transform: translateX(-10%) rotate(-30deg);
     }
 }
 </style>
