@@ -22,6 +22,7 @@
           </div>
           <div class="Heading__right--backgroundImages">
             <img src="/Background-images/Pizza-background.png" alt="Bowl background image">
+            <img src="/Background-images/Sphagetti-background.png" alt="Sphagetti background image">
           </div>
         </div>
       </div>
@@ -174,20 +175,34 @@ export default defineComponent ({
           }
 
           &--backgroundImages {
+            width: 100%;
+            height: 100%;
             position: absolute;
             top: 0;
             left: 0;
 
             img {
-              position: absolute;
-              aspect-ratio: 16/9;
-              height: 150px;
-              top: 60px;
-              left: 40px;
-              overflow: hidden;
-              transform: rotate(-10deg);
-              animation: firstBackgroundItemMove 2s forwards, firstBackgroundItemSpin 10s infinite;
-              animation-delay: 0s, 2s;
+
+              &:nth-child(1) {
+                position: absolute;
+                aspect-ratio: 16/9;
+                height: 150px;
+                top: 60px;
+                left: 40px;
+                overflow: hidden;
+                transform: rotate(-10deg);
+                animation: firstBackgroundItemMove 2s forwards, firstBackgroundItemSpin 10s infinite;
+                animation-delay: 0s, 2s;
+              }
+
+              &:nth-child(2) {
+                position: absolute;
+                aspect-ratio: 16/9;
+                height: 60%;
+                overflow: hidden;
+                left: 150px;
+                bottom: -50px;
+              }
             }
           }
         }
