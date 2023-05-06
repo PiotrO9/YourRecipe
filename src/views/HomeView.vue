@@ -23,6 +23,7 @@
           <div class="Heading__right--backgroundImages">
             <img src="/Background-images/Pizza-background.png" alt="Bowl background image">
             <img src="/Background-images/Sphagetti-background.png" alt="Sphagetti background image">
+            <img src="/Background-images/Bowl-background.png" alt="Sphagetti background image">
           </div>
         </div>
       </div>
@@ -52,7 +53,6 @@ export default defineComponent ({
   data(): IRecipesGrid {
     return {
       recipes: null,
-      path: "/Background-images/Bowl-background.png"
     }
   },
   mounted() {
@@ -182,27 +182,34 @@ export default defineComponent ({
             left: 0;
 
             img {
+              position: absolute;
+              aspect-ratio: 16/9;
+              overflow: hidden;
 
               &:nth-child(1) {
-                position: absolute;
-                aspect-ratio: 16/9;
                 height: 150px;
                 top: 60px;
                 left: 40px;
-                overflow: hidden;
                 transform: rotate(-10deg);
-                animation: firstBackgroundItemMove 2s forwards, firstBackgroundItemSpin 10s infinite;
+                animation: firstBackgroundItemMove 2s forwards, firstBackgroundItemSpin 10s infinite ease-in-out;
                 animation-delay: 0s, 2s;
               }
 
               &:nth-child(2) {
-                position: absolute;
-                aspect-ratio: 16/9;
                 height: 60%;
-                overflow: hidden;
                 left: 150px;
                 bottom: -50px;
-                animation: secondBackgroundItemMove 3s forwards, secondBackgroundItemSpin 10s infinite;
+                animation: secondBackgroundItemMove 3s forwards, secondBackgroundItemSpin 12s infinite ease-in-out;
+                animation-delay: 0s, 3s;
+              }
+
+              &:nth-child(3) {
+                aspect-ratio: 1/1;
+                height: 30%;
+                right: -50px;
+                top: 140px;
+                height: 70%;
+                animation: thirdBackgroundItemMove 3s forwards, thirdBackgorundItemSpin 10s infinite ease-in-out;
                 animation-delay: 0s, 3s;
               }
             }
@@ -217,11 +224,6 @@ export default defineComponent ({
         grid-template-columns: 1fr 1fr 1fr;
         gap: 50px;
         margin-top: 2rem;
-        
-        .test {
-          @include SquareSize(100%);
-          background-color: red;
-        }
       }
     }
   }
@@ -268,6 +270,24 @@ export default defineComponent ({
     }
     100% {
       transform: translate3d(0px, 0px, 0px) rotate(0deg);
+    }
+  }
+
+  @keyframes thirdBackgroundItemMove {
+    0% {
+      transform: translate3d(300px, 20px, 0px) rotate(30deg);
+    }
+    100% {
+      transform: translate3d(0px, 20px, 0px) rotate(0deg);
+    }
+  }
+
+  @keyframes thirdBackgorundItemSpin {
+    25%, 75% {
+      transform: translate3d(30px, -30px, 0px) rotate(-7deg);
+    }
+    50% {
+      transform: translate3d(0px, -60px, 0px) rotate(7deg);
     }
   }
 </style>
