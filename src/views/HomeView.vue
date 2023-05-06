@@ -202,6 +202,8 @@ export default defineComponent ({
                 overflow: hidden;
                 left: 150px;
                 bottom: -50px;
+                animation: secondBackgroundItemMove 3s forwards, secondBackgroundItemSpin 10s infinite;
+                animation-delay: 0s, 3s;
               }
             }
           }
@@ -242,6 +244,30 @@ export default defineComponent ({
     }
     100% {
       transform: translate3d(0px, 0px, 0px) rotate(-10deg);
+    }
+  }
+
+  @keyframes secondBackgroundItemMove {
+    0% {
+      transform: translate3d(-100px, 250px, 0px) rotate(-20deg);
+    }
+    100% {
+      transform: translate3d(0px, 0px, 0px) rotate(0deg);
+    }
+  }
+
+  @keyframes secondBackgroundItemSpin {
+    0% {
+      transform: translate3d(0px, 0px, 0px) rotate(0deg);
+    }
+    25% {
+      transform: translate3d(50px, 30px, 0px) rotate(10deg);
+    }
+    75% {
+      transform: translate3d(-50px, 30px, 0px) rotate(-10deg);
+    }
+    100% {
+      transform: translate3d(0px, 0px, 0px) rotate(0deg);
     }
   }
 </style>
