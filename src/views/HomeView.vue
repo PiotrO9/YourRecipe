@@ -94,8 +94,8 @@ export default defineComponent ({
           height: 100%;
           display: flex;
           flex-direction: column;
-          font-family: "Sora";
           margin-left: 3rem;
+          font-family: "Sora";
 
           h1 {
             margin-top: auto;
@@ -122,10 +122,10 @@ export default defineComponent ({
             display: flex;
             flex-direction: row;
             align-items: center;
-            background-color: white;
-            border-radius: $ComponentBorderRadius;
             margin-top: 10%;
             z-index: 1;
+            background-color: white;
+            border-radius: $ComponentBorderRadius;
 
             &__input {
               @include SquareSize(100%);
@@ -175,8 +175,7 @@ export default defineComponent ({
           }
 
           &--backgroundImages {
-            width: 100%;
-            height: 100%;
+            @include SquareSize(100%);
             position: absolute;
             top: 0;
             left: 0;
@@ -191,7 +190,7 @@ export default defineComponent ({
                 top: 60px;
                 left: 40px;
                 transform: rotate(-10deg);
-                animation: firstBackgroundItemMove 2s forwards, firstBackgroundItemSpin 10s infinite ease-in-out;
+                animation: FirstBackgroundImageMove 2s forwards, FirstBackgroundImageSpin 10s infinite ease-in-out;
                 animation-delay: 0s, 2s;
               }
 
@@ -199,7 +198,7 @@ export default defineComponent ({
                 height: 60%;
                 left: 150px;
                 bottom: -50px;
-                animation: secondBackgroundItemMove 3s forwards, secondBackgroundItemSpin 12s infinite ease-in-out;
+                animation: SecondBackgroundImageMove 3s forwards, SecondBackgroundImageSpin 12s infinite ease-in-out;
                 animation-delay: 0s, 3s;
               }
 
@@ -209,7 +208,7 @@ export default defineComponent ({
                 right: -50px;
                 top: 140px;
                 height: 70%;
-                animation: thirdBackgroundItemMove 3s forwards, thirdBackgorundItemSpin 10s infinite ease-in-out;
+                animation: ThirdBackgroundImageMove 3s forwards, ThirdBackgorundImageSpin 10s infinite ease-in-out;
                 animation-delay: 0s, 3s;
               }
             }
@@ -228,7 +227,7 @@ export default defineComponent ({
     }
   }
 
-  @keyframes firstBackgroundItemMove {
+  @keyframes FirstBackgroundImageMove {
     0% {
       transform: translate3d(-80px, -150px, 0px) rotate(20deg);
     }
@@ -237,7 +236,7 @@ export default defineComponent ({
     }
   }
 
-  @keyframes firstBackgroundItemSpin {
+  @keyframes FirstBackgroundImageSpin {
     0% {
       transform:  rotate(-10deg);
     }
@@ -249,7 +248,7 @@ export default defineComponent ({
     }
   }
 
-  @keyframes secondBackgroundItemMove {
+  @keyframes SecondBackgroundImageMove {
     0% {
       transform: translate3d(-100px, 250px, 0px) rotate(-20deg);
     }
@@ -258,7 +257,7 @@ export default defineComponent ({
     }
   }
 
-  @keyframes secondBackgroundItemSpin {
+  @keyframes SecondBackgroundImageSpin {
     0% {
       transform: translate3d(0px, 0px, 0px) rotate(0deg);
     }
@@ -273,7 +272,7 @@ export default defineComponent ({
     }
   }
 
-  @keyframes thirdBackgroundItemMove {
+  @keyframes ThirdBackgroundImageMove {
     0% {
       transform: translate3d(300px, 20px, 0px) rotate(30deg);
     }
@@ -282,7 +281,7 @@ export default defineComponent ({
     }
   }
 
-  @keyframes thirdBackgorundItemSpin {
+  @keyframes ThirdBackgorundImageSpin {
     25%, 75% {
       transform: translate3d(30px, -30px, 0px) rotate(-7deg);
     }
