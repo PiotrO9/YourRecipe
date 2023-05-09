@@ -43,8 +43,8 @@ export default defineComponent({
 @import "../../GlobalStyles/variabless.scss";
 .FavuoriteIcon {
     position: absolute;
-    top: 5%;
-    left: 5%;
+    top: 6%;
+    left: 7%;
 
     button {
         background: transparent;

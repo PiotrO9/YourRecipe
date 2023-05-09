@@ -56,14 +56,24 @@ export default defineComponent ({
     min-height: 500px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     position: relative;
     background-color: white;
     border-radius: $ComponentBorderRadius;
 
     img {
-      width: 100%;
+      width: calc(100% - 30px);
       aspect-ratio: 16/9;
       border-radius: $ComponentBorderRadius;
+      margin-top: 15px;
+      -webkit-transition: width 0.3s, margin-top 0.3s;
+
+      &:hover {
+        width: 100%;
+        margin-top: 0px;
+
+        -webkit-transition: width 0.3s, margin-top 0.3s;
+      }
     }
 
     &__details {
@@ -89,6 +99,20 @@ export default defineComponent ({
         font-size: 1.2rem;
         font-weight: bold;
       }
+    }
+  }
+
+  @keyframes ZoomInImage {
+    100% {
+      width: 100%;
+      margin-top: 0px;
+    }
+  }
+
+  @keyframes ZoomOutImage {
+    100% {
+      width: 50%;
+      margin-top: 15px;
     }
   }
 </style>
