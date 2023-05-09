@@ -40,6 +40,7 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+@import "../../GlobalStyles/variabless.scss";
 .FavuoriteIcon {
     position: absolute;
     top: 5%;
@@ -49,7 +50,7 @@ export default defineComponent({
         background: transparent;
         border: none;
         outline: none;
-        color: red;
+        color: $Orange;
         cursor: pointer;
 
         &.Active-favourite{
