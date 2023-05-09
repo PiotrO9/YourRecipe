@@ -6,8 +6,7 @@
       :src=imageFullPath />
       <div class="Recipe__details">
         <p class="Recipe__details--title" @click="HandleTitleCLick">{{ recipe.title }}</p>
-        <p :class="{ longDescription: recipe.description.length > 300 }" 
-          class="Recipe__details--description">{{ recipe.description }}</p>
+        <p class="Recipe__details--description">{{ recipe.description }}</p>
       </div>
   </div>
 </template>
@@ -53,7 +52,7 @@ export default defineComponent ({
   .Recipe {
     width: 100%;
     height: max-content;
-    min-height: 500px;
+    min-height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -71,7 +70,6 @@ export default defineComponent ({
       &:hover {
         width: 100%;
         margin-top: 0px;
-
         -webkit-transition: width 0.3s, margin-top 0.3s;
       }
     }
@@ -94,25 +92,15 @@ export default defineComponent ({
       }
 
       &--description {
-        text-align: start;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
         margin-left: 5px;
+        text-align: start;
         font-size: 1.2rem;
         font-weight: bold;
       }
-    }
-  }
-
-  @keyframes ZoomInImage {
-    100% {
-      width: 100%;
-      margin-top: 0px;
-    }
-  }
-
-  @keyframes ZoomOutImage {
-    100% {
-      width: 50%;
-      margin-top: 15px;
     }
   }
 </style>

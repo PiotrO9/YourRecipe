@@ -96,6 +96,7 @@ export default defineComponent ({
           flex-direction: column;
           margin-left: 3rem;
           font-family: "Sora";
+          user-select: none;
 
           h1 {
             margin-top: auto;
