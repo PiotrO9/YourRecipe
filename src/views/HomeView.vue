@@ -78,6 +78,7 @@ export default defineComponent ({
       align-items: center;
       flex-direction: column;
       overflow-x: scroll;
+      margin-bottom: 100px;
 
       .Heading {
         width: 90%;

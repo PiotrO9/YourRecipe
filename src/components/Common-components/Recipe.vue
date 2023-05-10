@@ -61,6 +61,7 @@ export default defineComponent ({
     width: 100%;
     height: max-content;
     min-height: 400px;
+    max-height: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -93,7 +94,7 @@ export default defineComponent ({
       
       &--title {
         width: fit-content;
-        margin: 6px 0px 4px 8px;
+        margin: 6px 0px 4px 18px;
         font-weight: 700;
         font-size: 2rem;
         cursor: pointer;
@@ -103,6 +104,8 @@ export default defineComponent ({
         display: flex;
         flex-direction: row;
         align-items: center;
+        margin-left: 12px;
+        margin-bottom: 7px;
 
         p {
           font-weight: bold;
@@ -123,10 +126,11 @@ export default defineComponent ({
 
       &--description {
         display: -webkit-box;
-        -webkit-line-clamp: 4;
+        -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        margin-left: 5px;
+        margin-left: 18px;
+        margin-right: 10px;
         text-align: start;
         font-size: 1.2rem;
         font-weight: 400;
