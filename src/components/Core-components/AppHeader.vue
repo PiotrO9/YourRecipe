@@ -115,6 +115,10 @@ export default defineComponent ({
         display: flex;
         align-items: center;
 
+        @media (max-width: $SmallWidth) {
+            width: 85%;
+        }
+
         menu {
             max-height: 50px;
             display: flex;
@@ -143,6 +147,14 @@ export default defineComponent ({
                 font-family: "Sora";
                 font-weight: bold;
 
+                @media (max-width: $MediumWidth) {
+                    font-size: 1rem;
+                }
+
+                @media (max-width: $SmallWidth) {
+                    font-size: 0.8rem;
+                }
+
                 &:hover {
                     color: $Orange;
                     cursor: pointer;
@@ -158,7 +170,7 @@ export default defineComponent ({
         justify-content: flex-end;
         margin-right: 15px;
         gap: 10px;
-        
+
         img {
             @include SquareSize(35px);
         }
@@ -167,6 +179,11 @@ export default defineComponent ({
             font-size: 20px;
             word-spacing: 5px;
             user-select: none;
+
+            @media (max-width: $MediumWidth) {
+              font-size: 16px;
+              text-align: center;
+            }
         }
     }
 

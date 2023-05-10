@@ -103,11 +103,27 @@ export default defineComponent ({
             margin-top: auto;
             margin-bottom: 3rem;
             font-size: 3.5rem;
+
+            @media (max-width: $ExtraLargeWidth) {
+              font-size: 2.8rem;
+            }
+
+            @media (max-width: $LargeWidth) {
+              font-size: 2rem;
+            }
           }
 
           p {
             margin-bottom: auto;
             font-size: 2rem;
+
+            @media (max-width: $ExtraLargeWidth) {
+              font-size: 1.8rem;
+            }
+
+            @media (max-width: $LargeWidth) {
+              font-size: 1.7rem;
+            }
           }
         }
 
@@ -128,6 +144,15 @@ export default defineComponent ({
             z-index: 1;
             background-color: white;
             border-radius: $ComponentBorderRadius;
+
+            @media (max-width: $MediumWidth) {
+              width: 85%;
+              height: 12%;
+            }
+
+            @media (max-width: $SmallWidth) {
+              width: 95%;
+            }
 
             &__input {
               @include SquareSize(100%);
@@ -168,6 +193,13 @@ export default defineComponent ({
                 font-weight: bold;
                 font-size: 100%;
 
+                @media (max-width: $SmallWidth) {
+                  padding-left: 0.5rem;
+                  padding-right: 0.5rem;
+                  margin-right: 50px;
+                  min-height: 35px;
+                }
+
                 &:hover {
                   cursor: pointer;
                   color: $LightOrange;
@@ -202,16 +234,37 @@ export default defineComponent ({
                 bottom: -50px;
                 animation: SecondBackgroundImageMove 3s forwards, SecondBackgroundImageSpin 12s infinite ease-in-out;
                 animation-delay: 0s, 3s;
+
+                @media (max-width: $ExtraLargeWidth) {
+                  left: 40px;
+                  height: 52%;
+                }
+
+                @media (max-width: $LargeWidth) {
+                  left: 20px;
+                  height: 45%;
+                  bottom: -30px;
+                }
               }
 
               &:nth-child(3) {
                 aspect-ratio: 1/1;
-                height: 30%;
                 right: -50px;
                 top: 140px;
                 height: 70%;
                 animation: ThirdBackgroundImageMove 3s forwards, ThirdBackgorundImageSpin 10s infinite ease-in-out;
                 animation-delay: 0s, 3s;
+
+                @media (max-width: $ExtraLargeWidth) {
+                  right: -60px;
+                  height: 65%;
+                }
+
+                @media (max-width: $LargeWidth) {
+                  right: -50px;
+                  height: 58%;
+                }
+                
               }
             }
           }
