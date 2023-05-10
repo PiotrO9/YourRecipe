@@ -37,7 +37,7 @@ import { useDetailObject } from '@/stores/detailObject';
 import type DetailViewDataTypes from '@/types/ViewsDataTypes/DetailViewDataTypes';
 import CombineFullImagePath from '@/utils/CombineFullImagePath';
 import type Recipe from '@/types/Recipe';
-import Ingredient from '@/components/Common-components/ingredient.vue';
+import Ingredient from '@/components/Common-components/Ingredient.vue';
 
 export default defineComponent ({
     components: {
