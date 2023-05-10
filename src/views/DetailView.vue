@@ -12,7 +12,9 @@
                     <p>Czas przygotowania: {{ recipe?.prepareTime }}</p>
                     <div>
                         <p>Trudność: </p>
-                        <fa v-for="i in recipe?.difficulty" :key="i" icon="fa-solid fa-star" />
+                        <fa v-for="i in recipe?.difficulty" 
+                            :key="i" 
+                            icon="fa-solid fa-star"/>
                     </div>
                 </section>
                 <section class="right">

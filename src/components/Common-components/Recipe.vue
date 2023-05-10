@@ -6,6 +6,14 @@
       :src=imageFullPath />
       <div class="Recipe__details">
         <p class="Recipe__details--title" @click="HandleTitleCLick">{{ recipe.title }}</p>
+        <div class="Recipe__details--difficulty">
+          <p>Trudność przygotowania:</p>
+          <div class="Recipe__details--difficulty__stars">
+            <fa v-for="i in recipe?.difficulty" 
+              :key="i" 
+              icon="fa-solid fa-star"/>
+          </div>
+        </div>
         <p class="Recipe__details--description">{{ recipe.description }}</p>
       </div>
   </div>
@@ -91,15 +99,37 @@ export default defineComponent ({
         cursor: pointer;
       }
 
+      &--difficulty {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        p {
+          font-weight: bold;
+          font-size: 100%;
+          margin-left: 6px;
+          font-size: 1.2rem;
+        }
+
+        &__stars {
+          width: max(100px, 10%);
+          margin-left: 8px;
+
+          svg {
+            color: $Orange;
+          }
+        }
+      }
+
       &--description {
         display: -webkit-box;
-        -webkit-line-clamp: 5;
+        -webkit-line-clamp: 4;
         -webkit-box-orient: vertical;
         overflow: hidden;
         margin-left: 5px;
         text-align: start;
         font-size: 1.2rem;
-        font-weight: bold;
+        font-weight: 400;
       }
     }
   }
