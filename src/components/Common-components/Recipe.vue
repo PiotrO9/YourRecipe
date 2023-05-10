@@ -69,6 +69,10 @@ export default defineComponent ({
     background-color: white;
     border-radius: $ComponentBorderRadius;
 
+    @media (max-width: $VerySmallWidth) {
+        max-height: 550px;
+    }
+
     img {
       width: calc(100% - 30px);
       aspect-ratio: 16/9;

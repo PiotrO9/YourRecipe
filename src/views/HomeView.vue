@@ -72,13 +72,16 @@ export default defineComponent ({
     padding-left: 30px;
     padding-right: 20px;
 
+    @media (max-width: $SmallWidth) {
+        padding: 0px;
+    }
+
     main {
       @include SquareSize(100%);
       display: flex;
       align-items: center;
       flex-direction: column;
       overflow-x: scroll;
-      margin-bottom: 100px;
 
       .Heading {
         width: 90%;
@@ -89,6 +92,10 @@ export default defineComponent ({
         background-color: $LightOrange;
         border-radius:  20px;
         overflow: hidden;
+
+        @media (max-width: $MediumWidth) {
+          width: 100%;
+        }
 
         &__left {
           width: 30%;
@@ -278,6 +285,20 @@ export default defineComponent ({
         grid-template-columns: 1fr 1fr 1fr;
         gap: 50px;
         margin-top: 2rem;
+
+        @media (max-width: $MediumWidth) {
+          width: 100%;
+          grid-template-columns: 1fr 1fr;
+        }
+
+        @media (max-width: $VerySmallWidth) {
+          width: 95%;
+          grid-template-columns: 1fr;
+        }
+
+        @media (max-width: $SmallWidth) {
+          width: 95%;
+        }
       }
     }
   }
