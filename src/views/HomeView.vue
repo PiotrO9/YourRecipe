@@ -204,8 +204,6 @@ export default defineComponent ({
               justify-content: flex-start;
               gap: 10px;
 
-              
-
               svg {
                 height: 1.5rem;
                 margin-left: 1rem;
