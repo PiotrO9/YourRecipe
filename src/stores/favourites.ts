@@ -13,6 +13,9 @@ export const useFavourites = defineStore('Favourites', {
     actions: {
         setFavourites(RecipeId: number) {
             this.Favourites.push(RecipeId)
+        },
+        removeFromFavourites(RecipeId: number) {
+            this.Favourites = this.Favourites.filter(id => id != RecipeId)
         }
     }
 })
