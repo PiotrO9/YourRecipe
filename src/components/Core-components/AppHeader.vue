@@ -87,6 +87,10 @@ export default defineComponent ({
         span {
             font-weight: bold;
             user-select: none;
+
+            @media (max-width: 768px) {
+                display: none;
+            }
             
             &:first-child {
                 color: $Orange;
@@ -100,6 +104,19 @@ export default defineComponent ({
         margin-left: 20px;
         margin-right: 20px;
         cursor: pointer;
+
+        @media (max-width: 768px) {
+            @include SquareSize(35px);
+        }
+
+        @media (max-width: $MobileMediumWidth) {
+            margin-left: 0px;
+            margin-right: 10px;
+        }
+
+        @media (max-width: $MobileSmallWidth) {
+            @include SquareSize(30px);
+        }
 
         &.noticer {
             animation: Notice 4s infinite;
@@ -126,6 +143,10 @@ export default defineComponent ({
             z-index: -2;
             gap: 20px;
             transform: translateX(-120px);
+
+            @media (max-width: $MobileMediumWidth) {
+                gap: 10px;
+            }
             
             &.invisible {
                 opacity: 0;
@@ -140,12 +161,15 @@ export default defineComponent ({
             }
 
             p {
+                display: flex;
+                align-items: center;
                 background-color: $CremeBackground;
                 padding: 6px;
                 border-radius: $ComponentBorderRadius;
                 font-size: 1.2rem;
                 font-family: "Sora";
                 font-weight: bold;
+                width: fit-content;
 
                 @media (max-width: $MediumWidth) {
                     font-size: 1rem;
@@ -153,6 +177,12 @@ export default defineComponent ({
 
                 @media (max-width: $SmallWidth) {
                     font-size: 0.8rem;
+                }
+
+                @media (max-width: 768px) {
+                    font-size: 70%;
+                    text-align: center;
+                    padding: 3px;
                 }
 
                 &:hover {
@@ -167,13 +197,8 @@ export default defineComponent ({
         width: 20%;
         display: flex;
         align-items: center;
-        justify-content: flex-end;
         margin-right: 15px;
         gap: 10px;
-
-        img {
-            @include SquareSize(35px);
-        }
 
         span {
             font-size: 20px;
@@ -183,6 +208,12 @@ export default defineComponent ({
             @media (max-width: $MediumWidth) {
               font-size: 16px;
               text-align: center;
+            }
+
+            @media (max-width: 768px) {
+                font-size: 12px;
+                margin-right: 0px;
+                margin-left: 10px;
             }
         }
     }
