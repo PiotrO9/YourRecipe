@@ -72,7 +72,7 @@
     },
     {
         "title": "Sushi",
-        "difficulty": 4,
+        "difficulty": 5,
         "prepareTime": 90,
         "description": "Sushi to tradycyjne danie kuchni japońskiej, składające się z ryżu sushi, wodorostów nori i różnych dodatków, takich jak surowe ryby, warzywa czy owoce morza. Są to kulinarne arcydzieła, ale wymagają odpowiedniego przygotowania i umiejętności.",
         "ingredients": [        ["ryż sushi", "300g"],

@@ -61,7 +61,6 @@ export default defineComponent ({
     width: 100%;
     height: max-content;
     min-height: 400px;
-    max-height: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -113,17 +112,34 @@ export default defineComponent ({
 
         p {
           font-weight: bold;
-          font-size: 100%;
           margin-left: 6px;
           font-size: 1.2rem;
+
+          @media (max-width: $ExtraLargeWidth) {
+              font-size: 1.05rem;
+          }
         }
 
         &__stars {
-          width: max(100px, 10%);
+          width: max(110px, 10%);
+          display: flex;
+          justify-content: center;
+          gap: 5px;
+          flex-wrap: wrap;
           margin-left: 8px;
+
+          @media (max-width: $LargeWidth) {
+              margin-left: 0px;
+              margin-right: 4px;
+              width: max(150px, 10%);
+          }
 
           svg {
             color: $Orange;
+
+            @media (max-width: $LargeWidth) {
+              height: 14px;
+            }
           }
         }
       }

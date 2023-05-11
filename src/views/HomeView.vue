@@ -233,6 +233,11 @@ export default defineComponent ({
                 transform: rotate(-10deg);
                 animation: FirstBackgroundImageMove 2s forwards, FirstBackgroundImageSpin 10s infinite ease-in-out;
                 animation-delay: 0s, 2s;
+
+                @media (max-width: $ExtraLargeWidth) {
+                  left: 10px;
+                  top: 95px;
+                }
               }
 
               &:nth-child(2) {
@@ -251,6 +256,12 @@ export default defineComponent ({
                   left: 20px;
                   height: 45%;
                   bottom: -30px;
+                }
+
+                @media (max-width: $SmallWidth) {
+                  left: 0px;
+                  height: 45%;
+                  bottom: -40px;
                 }
               }
 
@@ -271,7 +282,11 @@ export default defineComponent ({
                   right: -50px;
                   height: 58%;
                 }
-                
+
+                @media (max-width: $SmallWidth) {
+                  right: -60px;
+                  height: 55%;
+                }
               }
             }
           }
@@ -286,9 +301,12 @@ export default defineComponent ({
         gap: 50px;
         margin-top: 2rem;
 
+        @media (max-width: 1200px) {
+          grid-template-columns: 1fr 1fr;
+        }
+
         @media (max-width: $MediumWidth) {
           width: 100%;
-          grid-template-columns: 1fr 1fr;
         }
 
         @media (max-width: $VerySmallWidth) {
