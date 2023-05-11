@@ -9,11 +9,19 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { useFavourites } from '@/stores/favourites';
 
 export default defineComponent({
+    props: ['id'],
     data() {
         return {
-            IconState: false
+            IconState: false,
+            RecipeId: this.$props.id
+        }
+    },
+    computed: {
+        Favourites() {
+            return useFavourites()
         }
     },
     methods: {
@@ -24,17 +32,21 @@ export default defineComponent({
 
             if(this.IconState) {
                 ClickedButton.classList.add("Active-favourite")
+                this.Favourites.setFavourites(this.RecipeId)
             }
             else {
                 ClickedButton.classList.add("Deactive-favourite")
+                this.Favourites.removeFromFavourites(this.RecipeId)
             }
-
 
             setTimeout(() => {
                 ClickedButton.classList.remove("Active-favourite")
                 ClickedButton.classList.remove("Deactive-favourite")
             }, 1000);
         }
+    },
+    mounted() {
+        console.log(this.$props.id)
     }
 })
 </script>
