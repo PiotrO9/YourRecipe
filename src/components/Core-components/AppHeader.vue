@@ -71,10 +71,10 @@ export default defineComponent ({
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        font-family: 'Sora';
+        margin-top: 1.5rem;
         background-color: white;
         border-radius: $ComponentBorderRadius;
-        margin-top: 1.5rem;
+        font-family: 'Sora';
     }
 
     .Header__logo {
@@ -126,11 +126,11 @@ export default defineComponent ({
     .Options {
         width: 70%;
         height: 50px;
-        position: relative;
-        z-index: 0;
-        overflow: hidden;
         display: flex;
         align-items: center;
+        position: relative;
+        overflow: hidden;
+        z-index: 0;
 
         @media (max-width: $SmallWidth) {
             width: 85%;
@@ -139,9 +139,9 @@ export default defineComponent ({
         menu {
             max-height: 50px;
             display: flex;
+            gap: 20px;
             position: absolute;
             z-index: -2;
-            gap: 20px;
             transform: translateX(-120px);
 
             @media (max-width: $MobileMediumWidth) {
@@ -161,15 +161,15 @@ export default defineComponent ({
             }
 
             p {
+                width: fit-content;
                 display: flex;
                 align-items: center;
-                background-color: $CremeBackground;
                 padding: 6px;
                 border-radius: $ComponentBorderRadius;
+                background-color: $CremeBackground;
                 font-size: 1.2rem;
                 font-family: "Sora";
                 font-weight: bold;
-                width: fit-content;
 
                 @media (max-width: $MediumWidth) {
                     font-size: 1rem;
@@ -180,9 +180,9 @@ export default defineComponent ({
                 }
 
                 @media (max-width: 768px) {
-                    font-size: 70%;
-                    text-align: center;
                     padding: 3px;
+                    text-align: center;
+                    font-size: 70%;
                 }
 
                 &:hover {
@@ -206,14 +206,14 @@ export default defineComponent ({
             user-select: none;
 
             @media (max-width: $MediumWidth) {
-              font-size: 16px;
-              text-align: center;
+                text-align: center;
+                font-size: 16px;
             }
 
             @media (max-width: 768px) {
-                font-size: 12px;
                 margin-right: 0px;
                 margin-left: 10px;
+                font-size: 12px;
             }
         }
     }

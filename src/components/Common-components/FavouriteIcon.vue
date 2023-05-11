@@ -74,8 +74,7 @@ export default defineComponent({
         }
    
         svg {
-            width: 40px;
-            height: 40px;
+            @include SquareSize(40px);
         }
     }
 }

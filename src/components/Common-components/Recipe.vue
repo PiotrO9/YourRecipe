@@ -74,9 +74,9 @@ export default defineComponent ({
 
     img {
       width: calc(100% - 30px);
+      margin-top: 15px;
       aspect-ratio: 16/9;
       border-radius: $ComponentBorderRadius;
-      margin-top: 15px;
       -webkit-transition: width 0.3s, margin-top 0.3s;
 
       &:hover {
@@ -111,8 +111,8 @@ export default defineComponent ({
         margin-bottom: 7px;
 
         p {
-          font-weight: bold;
           margin-left: 6px;
+          font-weight: bold;
           font-size: 1.2rem;
 
           @media (max-width: $ExtraLargeWidth) {
@@ -124,14 +124,14 @@ export default defineComponent ({
           width: max(110px, 10%);
           display: flex;
           justify-content: center;
-          gap: 5px;
           flex-wrap: wrap;
+          gap: 5px;
           margin-left: 8px;
 
           @media (max-width: $LargeWidth) {
-              margin-left: 0px;
-              margin-right: 4px;
-              width: max(150px, 10%);
+            width: max(150px, 10%);
+            margin-left: 0px;
+            margin-right: 4px;
           }
 
           svg {
@@ -146,11 +146,11 @@ export default defineComponent ({
 
       &--description {
         display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
         margin-left: 18px;
         margin-right: 10px;
+        overflow: hidden;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
         text-align: start;
         font-size: 1.2rem;
         font-weight: 400;

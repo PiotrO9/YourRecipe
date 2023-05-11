@@ -34,9 +34,9 @@ export default defineComponent ({
         justify-content: flex-start;
         align-content: center;
         flex-direction: column;
+        gap: 2rem;
         margin-top: 20px;
         padding-top: 30px;
-        gap: 2rem;
         background-color: white;
         border-radius: $ComponentBorderRadius;
 
