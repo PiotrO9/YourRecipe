@@ -76,6 +76,10 @@ export default defineComponent ({
         padding: 0px;
     }
 
+    @media (max-width: $MobileSmallWidth) {
+        width: 100vw;
+    }
+
     main {
       @include SquareSize(100%);
       display: flex;
@@ -95,6 +99,12 @@ export default defineComponent ({
 
         @media (max-width: $MediumWidth) {
           width: 100%;
+          height: 700px;
+        }
+
+        @media (max-width: 768px) {
+          flex-direction: column;
+          min-height: 600px;
         }
 
         &__left {
@@ -105,6 +115,13 @@ export default defineComponent ({
           margin-left: 3rem;
           font-family: "Sora";
           user-select: none;
+
+          @media (max-width: 768px) {
+            width: 100%;
+            height: 50%;
+            text-align: center;
+            margin-left: 0px;
+          }
 
           h1 {
             margin-top: auto;
@@ -131,6 +148,10 @@ export default defineComponent ({
             @media (max-width: $LargeWidth) {
               font-size: 1.7rem;
             }
+
+            @media (max-width: $MobileBigWidth) {
+              font-size: 1.4rem;
+            }
           }
         }
 
@@ -140,6 +161,10 @@ export default defineComponent ({
           display: flex;
           justify-content: center;
           position: relative;
+
+          @media (max-width: 768px) {
+            width: 100%;
+          }
 
           &--searchContainer {
             width: 70%;
@@ -161,6 +186,15 @@ export default defineComponent ({
               width: 95%;
             }
 
+            @media (max-width: 768px) {
+              width: 75%;
+              height: 70px;
+            }
+
+            @media (max-width: $MobileMediumWidth) {
+              width: 90%;
+            }
+
             &__input {
               @include SquareSize(100%);
               max-height: 50px;
@@ -170,9 +204,15 @@ export default defineComponent ({
               justify-content: flex-start;
               gap: 10px;
 
+              
+
               svg {
                 height: 1.5rem;
                 margin-left: 1rem;
+
+                @media (max-width: $MobileSmallWidth) {
+                  height: 1.3rem;
+                }
               }
 
               input {
@@ -184,6 +224,10 @@ export default defineComponent ({
                 font-size: 100%;
                 font-family: "Sora";
                 font-weight: bold;
+
+                @media (max-width: $MobileSmallWidth) {
+                  font-size: 90%;
+                }
               }
 
               button {
@@ -205,6 +249,20 @@ export default defineComponent ({
                   padding-right: 0.5rem;
                   margin-right: 50px;
                   min-height: 35px;
+                }
+
+                @media (max-width: 768px) {
+                  padding-left: 1rem;
+                  padding-right: 1rem;
+                  margin-right: 1rem;
+                }
+
+                @media (max-width: $MobileSmallWidth) {
+                  padding-left: 0.5rem;
+                  padding-right: 0.5rem;
+                  margin-right: 2.5rem;
+                  margin-left: -1rem;
+                  font-size: 90%;
                 }
 
                 &:hover {
@@ -238,6 +296,15 @@ export default defineComponent ({
                   left: 10px;
                   top: 95px;
                 }
+
+                @media (max-width: 768px) {
+                  left: 20px;
+                  height: 35%;
+                }
+
+                @media (max-width: $MobileSmallWidth) {
+                  height: 30%;
+                }
               }
 
               &:nth-child(2) {
@@ -263,6 +330,22 @@ export default defineComponent ({
                   height: 45%;
                   bottom: -40px;
                 }
+
+                @media (max-width: 768px) {
+                  left: 60px;
+                  height: 55%;
+                }
+
+                @media (max-width: $MobileMediumWidth) {
+                  left: 10px;
+                  height: 50%;
+                }
+                
+                @media (max-width: $MobileSmallWidth) {
+                  left: 0px;
+                  height: 45%;
+                  bottom: -10px
+                }
               }
 
               &:nth-child(3) {
@@ -286,6 +369,16 @@ export default defineComponent ({
                 @media (max-width: $SmallWidth) {
                   right: -60px;
                   height: 55%;
+                }
+
+                @media (max-width: 768px) {
+                  right: -50px;
+                  height: 65%;
+                }
+
+                @media (max-width: $MobileSmallWidth) {
+                  right: -70px;
+                  height: 60%;
                 }
               }
             }
