@@ -163,6 +163,10 @@ export default defineComponent ({
             display: flex;
             flex-direction: column;
 
+            @media (max-width: 1024px) {
+                width: 80%;
+            }
+
             p {
                 margin-top: 20px;
                 text-align: center;
@@ -172,6 +176,14 @@ export default defineComponent ({
 
                 &:nth-child(2) {
                     text-align: start;
+                }
+
+                @media (max-width: 1024px) {
+                    font-size: 4.5rem;
+                }
+
+                @media (max-width: $MobileMediumWidth) {
+                    font-size: 3rem;
                 }
             }
 
@@ -189,11 +201,21 @@ export default defineComponent ({
                 height: 80%;
                 display: flex;
                 flex-direction: row;
+
+                @media (max-width: $VerySmallWidth) {
+                    flex-direction: column;
+                }
                 
                 .left {
                     width: 40%;
                     height: 100%;
                     margin-left: 20px;
+
+                    @media (max-width: $VerySmallWidth) {
+                        width: 100%;
+                        height: max-content;
+                        margin-left: 0px;
+                    }
 
                     * {
                         &.show {
@@ -210,10 +232,27 @@ export default defineComponent ({
                             font-size: 1.6rem;
                             word-spacing: 0.7rem;
                             letter-spacing: 1px;
+
+                            @media (max-width: 1024px) {
+                                font-size: 1.3rem;
+                                letter-spacing: 0px;
+                            }
+
+                            @media (max-width: $VerySmallWidth) {
+                                text-align: center;
+                            }
                         }
 
                         &:nth-child(2) {
                             font-size: 1.8rem;
+
+                            @media (max-width: 1024px) {
+                                font-size: 1.5rem;
+                            }
+
+                            @media (max-width: $VerySmallWidth) {
+                                text-align: center;
+                            }
                         }
                     }
 
@@ -221,6 +260,10 @@ export default defineComponent ({
                         display: flex;
                         flex-direction: row;
                         align-items: center;
+
+                        @media (max-width: $VerySmallWidth) {
+                            justify-content: center;
+                        }
 
                         p {
                             @include flex-center;
@@ -231,6 +274,7 @@ export default defineComponent ({
                         svg {
                             margin-top: auto;
                             margin-bottom: auto;
+                            color: $Orange;
 
                             &:nth-child(2) {
                                 margin-left: 15px;
@@ -247,14 +291,34 @@ export default defineComponent ({
                     height: 100%;
                     margin-left: 20px;
 
+                    @media (max-width: $VerySmallWidth) {
+                        width: 100%;
+                        margin-left: 0px;
+                        margin-bottom: 2rem;
+                    }
+
                     * {
                         &.show {
                             animation: show-up-right 2s forwards;
                         }
                     }
 
+                    .Ingredients {
+                        @media (max-width: $MobileMediumWidth) {
+                            margin-bottom: 2rem;
+                        }
+                    }
+
                     p {
                         font-size: 4rem;
+
+                        @media (max-width: 1024px) {
+                            font-size: 2.5rem;
+                        }
+
+                        @media (max-width: $MobileMediumWidth) {
+                            font-size: 2rem;
+                        }
                     }
                 }
             }

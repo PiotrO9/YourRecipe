@@ -29,6 +29,14 @@ export default defineComponent ({
         &::first-letter {
             text-transform: uppercase;
         }
+
+        @media (max-width: 1024px) {
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: $MobileMediumWidth) {
+            font-size: 1.2rem;
+        }
     }
 }
 </style>
