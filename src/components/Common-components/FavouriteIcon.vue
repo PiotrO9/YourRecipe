@@ -44,9 +44,6 @@ export default defineComponent({
                 ClickedButton.classList.remove("Deactive-favourite")
             }, 1000);
         }
-    },
-    mounted() {
-        console.log(this.$props.id)
     }
 })
 </script>

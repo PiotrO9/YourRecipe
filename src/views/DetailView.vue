@@ -1,7 +1,7 @@
 <template>
   <div class="detailView">
     <img class="mainImage" :src=imageFullPath :alt=recipe?.title>
-        <h1>{{ recipe?.title }}</h1>
+        <h1 id="MainRecipeName"></h1>
     <div class="RecipeDatas" id="RecipeDatas">
         <div class="RecipeDatas__content">
             <p>{{ recipe?.title }}</p>
@@ -33,6 +33,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import Typewriter from "@/types/TypeWriter"
 import { useDetailObject } from '@/stores/detailObject';
 import type DetailViewDataTypes from '@/types/ViewsDataTypes/DetailViewDataTypes';
 import CombineFullImagePath from '@/utils/CombineFullImagePath';
@@ -63,7 +64,16 @@ export default defineComponent ({
         else {
             this.$router.push({ name: "home" })
         }
+
+        const mainRecipeName: HTMLElement = document.getElementById("MainRecipeName") as HTMLElement
+
+        const typeWriter = new Typewriter(mainRecipeName, {
+            loop: false,
+            typingSpeed: 90
+        })
         
+        typeWriter.typeString(this.recipe?.title).start()
+
         const RecipeDatas: HTMLElement | null = document.getElementById("RecipeDatas")
 
         setTimeout(() => {
@@ -125,7 +135,7 @@ export default defineComponent ({
         font-family: "Kaushan Script";
         user-select: none;
         text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-        animation: slide-in 2s forwards;
+        // animation: slide-in 2s forwards;
     }
 
     .RecipeDatas {
@@ -143,9 +153,14 @@ export default defineComponent ({
 
             p {
                 margin-top: 20px;
+                text-align: center;
                 font-size: 6rem;
                 font-weight: 600;
                 font-family: "Sora";
+
+                &:nth-child(2) {
+                    text-align: start;
+                }
             }
 
             hr {
