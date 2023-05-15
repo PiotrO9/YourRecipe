@@ -19,6 +19,7 @@ export default defineComponent ({
     display: flex;
     flex-direction: row;
     gap: 1.5rem;
+    justify-content: space-between;
     margin-top: 0.6rem;
 
     p {

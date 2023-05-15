@@ -56,7 +56,13 @@ export default defineComponent ({
     },
     mounted() {
         this.recipe = this.detailObject.$state.detailRecipe as Recipe
-        this.imageFullPath = CombineFullImagePath(this.recipe.ImagePath)
+
+        if(this.recipe !== null && this.recipe !== undefined) {
+            this.imageFullPath = CombineFullImagePath(this.recipe.ImagePath)
+        }
+        else {
+            this.$router.push({ name: "home" })
+        }
         
         const RecipeDatas: HTMLElement | null = document.getElementById("RecipeDatas")
 
