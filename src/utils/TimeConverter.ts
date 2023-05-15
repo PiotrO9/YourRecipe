@@ -1,7 +1,7 @@
-export default class TimeConverter {
+class TimeConverter {
     convert(timeSpan: number): string {
-        const hours = timeSpan / 60
-        const minutes = timeSpan - (hours * 60)
+        const hours = (timeSpan >= 60) ? (timeSpan / 60) : 0
+        const minutes = (hours > 0) ? (timeSpan - (hours * 60)) : timeSpan
 
         if(hours === 0) {
             return `${minutes} min`
@@ -14,3 +14,5 @@ export default class TimeConverter {
         }
     }
 }
+
+export default TimeConverter
