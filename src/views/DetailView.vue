@@ -124,6 +124,15 @@ export default defineComponent ({
         width: 100vw;
         height: 100vh;
         aspect-ratio: 16/9;
+
+        @media (max-width: 1440px) {
+            width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 1024px) {
+            display: none;
+        }
     }
 
     h1 {
@@ -135,7 +144,10 @@ export default defineComponent ({
         font-family: "Kaushan Script";
         user-select: none;
         text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-        // animation: slide-in 2s forwards;
+        
+        @media (max-width: 1024px) {
+            display: none;
+        }
     }
 
     .RecipeDatas {
@@ -246,17 +258,6 @@ export default defineComponent ({
                     }
                 }
             }
-        }
-    }
-
-    @keyframes slide-in {
-        0% {
-            transform: translateY(-10vh);
-            opacity: 0.15;
-        }
-        100% {
-            transform: translateY(0px);
-            opacity: 1;
         }
     }
 
