@@ -8,21 +8,16 @@
     </div>
     <div class="mainContent__difficulty">
       <div class="mainContent__difficulty--stars">
-        <div class="SetStar">
-          <fa icon="fa-solid fa-star" class="gold"/>
-        </div>
-        <div class="SetStar">
-          <fa icon="fa-solid fa-star"/>
-        </div>
-        <div class="SetStar">
-          <fa icon="fa-solid fa-star"/>
-        </div>
-        <div class="SetStar">
-          <fa icon="fa-solid fa-star"/>
-        </div>
-        <div class="SetStar">
-          <fa icon="fa-solid fa-star"/>
-        </div>
+        <SetStar :StarHover="HandleStarHover" 
+                :StarClick="HandleStarClick"/>
+        <SetStar :StarHover="HandleStarHover" 
+                :StarClick="HandleStarClick"/>
+        <SetStar :StarHover="HandleStarHover" 
+                :StarClick="HandleStarClick"/>
+        <SetStar :StarHover="HandleStarHover" 
+                :StarClick="HandleStarClick"/>
+        <SetStar :StarHover="HandleStarHover" 
+                :StarClick="HandleStarClick"/>
       </div>
     </div>
     <div class="mainContent__time">
@@ -40,13 +35,27 @@
 </main>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
+import { defineComponent } from 'vue';
+import SetStar from '@/components/Common-components/SetStar.vue'
 
+export default defineComponent ({
+  components: {
+    SetStar
+  },
+  methods: {
+    HandleStarHover() {
+      console.log("hover")
+    },
+    HandleStarClick() {
+      console.log("click")
+    }
+  }
+})
 </script>
 
 <style scoped lang="scss">
 @import "../GlobalStyles/variabless.scss";
-@import "@/../node_modules/font-awesome/css/font-awesome.css";
 
 * {
   font-family: "Sora";
