@@ -1,21 +1,30 @@
 <template>
     <div class="SetStar">
         <fa icon="fa-solid fa-star"
-            @mouseenter="StarHover"
-            @click="StarClick"/>
+            @mouseenter="HandleStarHover"
+            @click="HandleStarClick"/>
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 export default defineComponent ({
-    props: ["StarHover", "StarClick"],
-    methods: {
-        StarHover() {
-            this.$props.StarHover
+    props: {
+        StarClick: {
+            type: Function,
+            required: true
         },
-        StarClick() {
-            this.$props.StarClick
+        StarHover: {
+            type: Function,
+            required: true
+        }
+    },
+    methods: {
+        HandleStarHover() {
+            this.StarHover(1)
+        },
+        HandleStarClick() {
+            this.StarClick(2)
         }
     }
 })

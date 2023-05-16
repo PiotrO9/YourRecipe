@@ -44,11 +44,11 @@ export default defineComponent ({
     SetStar
   },
   methods: {
-    HandleStarHover() {
-      console.log("hover")
+    HandleStarHover(starNumber: number) {
+      console.log(starNumber)
     },
-    HandleStarClick() {
-      console.log("click")
+    HandleStarClick(starNumber: number) {
+      console.log(starNumber)
     }
   }
 })
