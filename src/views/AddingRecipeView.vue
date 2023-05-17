@@ -34,10 +34,11 @@
     <div class="mainContent__ingredients">
       <p>Składniki <span>*</span></p>
       <div class="mainContent__ingredients--collection">
-        <AddIngredient />
+        <AddIngredient v-for="i in IngredientAmount" :key="i"/>
       </div>
+      <button @click="AddIngredient">+</button>
     </div>
-    <button>
+    <button class="SubmitButton">
       Dodaj
     </button>
 </main>
@@ -53,12 +54,20 @@ export default defineComponent ({
     SetStar,
     AddIngredient
   },
+  data() {
+    return {
+      IngredientAmount: 1
+    }
+  },
   methods: {
     HandleStarHover(starNumber: number) {
       console.log(starNumber)
     },
     HandleStarClick(starNumber: number) {
       console.log(starNumber)
+    },
+    AddIngredient() {
+      this.IngredientAmount++
     }
   }
 })
@@ -186,14 +195,39 @@ main {
     }
 
     &__ingredients {
+      p {
+        align-self: flex-start;
+        margin: 4px;
+      }
 
       &--collection {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
 
+      button {
+        @include SquareSize(40px);
+        @include flex-center;
+        margin-top: 1rem;
+        background-color: #b4dcf8;
+        border: 2px solid #62a9d4;
+        border-radius: 50%;
+        color: #62a9d4;
+        font-size: 2rem;
+        cursor: pointer;
+        -webkit-transition: font-size 0.5s, transform 0.5s;
+
+        &:hover {
+          font-size: 2.4rem;
+          transform: rotate(90deg);
+          -webkit-transition: font-size 0.5s, transform 0.5s;
+        }
       }
     } 
   }
 
-  button {
+  .SubmitButton {
     width: 8%;
     height: 40px;
     min-width: 100px;
