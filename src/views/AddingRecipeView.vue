@@ -38,7 +38,7 @@
           :key="i" 
           :RemoveIngredient="RemoveIngredient"/>
       </div>
-      <button>+</button>
+      <button @click="AddIngredient">+</button>
     </div>
     <button class="SubmitButton">
       Dodaj
@@ -50,15 +50,16 @@
 import { defineComponent } from 'vue';
 import SetStar from '@/components/Common-components/SetStar.vue'
 import AddIngredient from '@/components/Common-components/AddIngredient.vue';
+import Ingredient from '@/types/Ingredient'
 
 export default defineComponent ({
   components: {
     SetStar,
     AddIngredient
   },
-  data() {
+  data(): { Ingredients:Ingredient[] } {
     return {
-      Ingredients: [1,2]
+      Ingredients: []
     }
   },
   methods: {
@@ -68,11 +69,14 @@ export default defineComponent ({
     HandleStarClick(starNumber: number) {
       console.log(starNumber)
     },
-    // AddIngredient() {
-    //   this.IngredientAmount++
-    // },
+    AddIngredient() {
+      let index = (this.Ingredients.length > 0) ? this.Ingredients.length : 0;
+
+      const newIngredient = new Ingredient(index,"",0,"");
+      this.Ingredients.push(newIngredient)
+    },
     RemoveIngredient(id: number) {
-      this.Ingredients = this.Ingredients.slice(1, id)
+      this.Ingredients.splice(id, 1)
     }
   }
 })
