@@ -34,9 +34,10 @@
     <div class="mainContent__ingredients">
       <p>Składniki <span>*</span></p>
       <div class="mainContent__ingredients--collection">
-        <AddIngredient v-for="i in Ingredients" 
-          :key="i" 
-          :RemoveIngredient="RemoveIngredient"/>
+        <AddIngredient v-for="i in Ingredients.length" 
+          :key="i"
+          :RemoveIngredient="RemoveIngredient"
+          :IngredientData="Ingredients[i]"/>
       </div>
       <button @click="AddIngredient">+</button>
     </div>

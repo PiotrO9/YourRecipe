@@ -1,6 +1,6 @@
 <template>
-  <div class="AddIngredient">
-    <input type="text" placeholder="Składnik">
+  <div v-if="IngredientData" class="AddIngredient">
+    <input type="text" placeholder="Składnik" v-model="IngredientData.name">
     <input type="number" placeholder="Ilość" min="1">
     <select>
 
@@ -15,12 +15,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent ({
-    props: {
-        RemoveIngredient: {
-            type: Function,
-            required: true
-        }
-    },
+    props: ['RemoveIngredient', 'IngredientData'],
     methods: {
         HandleIngredientRemoving() {
             this.RemoveIngredient(this.$.vnode.key)
