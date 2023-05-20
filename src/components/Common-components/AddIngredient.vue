@@ -5,6 +5,9 @@
     <select>
 
     </select>
+    <button @click="HandleIngredientRemoving">
+        X
+    </button>
   </div>
 </template>
 
@@ -12,7 +15,17 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent ({
-
+    props: {
+        RemoveIngredient: {
+            type: Function,
+            required: true
+        }
+    },
+    methods: {
+        HandleIngredientRemoving() {
+            this.RemoveIngredient(this.$.vnode.key)
+        }
+    }
 })
 
 </script>
@@ -28,7 +41,7 @@ export default defineComponent ({
     width: 100%;
     height: 40px;
     display: grid;
-    grid-template-columns: 6fr 2fr 3fr;
+    grid-template-columns: 6fr 2fr 3fr 1fr;
 
     input {
         outline: none;
@@ -52,6 +65,17 @@ export default defineComponent ({
         border: 2px solid $Orange;
         border-top-right-radius: 8px;
         border-bottom-right-radius: 8px;
+    }
+
+    button {
+        outline: none;
+        border: none;
+        background-color: $CremeBackground;
+        font-size: 2rem;
+        font-weight: bold;
+        font-family: "Sora";
+        color: red;
+        cursor: pointer;
     }
 }
 

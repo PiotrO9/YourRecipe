@@ -34,9 +34,11 @@
     <div class="mainContent__ingredients">
       <p>Składniki <span>*</span></p>
       <div class="mainContent__ingredients--collection">
-        <AddIngredient v-for="i in IngredientAmount" :key="i"/>
+        <AddIngredient v-for="i in Ingredients" 
+          :key="i" 
+          :RemoveIngredient="RemoveIngredient"/>
       </div>
-      <button @click="AddIngredient">+</button>
+      <button>+</button>
     </div>
     <button class="SubmitButton">
       Dodaj
@@ -56,7 +58,7 @@ export default defineComponent ({
   },
   data() {
     return {
-      IngredientAmount: 1
+      Ingredients: [1,2]
     }
   },
   methods: {
@@ -66,8 +68,11 @@ export default defineComponent ({
     HandleStarClick(starNumber: number) {
       console.log(starNumber)
     },
-    AddIngredient() {
-      this.IngredientAmount++
+    // AddIngredient() {
+    //   this.IngredientAmount++
+    // },
+    RemoveIngredient(id: number) {
+      this.Ingredients = this.Ingredients.slice(1, id)
     }
   }
 })
@@ -85,6 +90,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 2rem;
 
   h1 {
     text-align: center;
@@ -236,6 +242,7 @@ main {
     border-radius: 8px;
     color: black;
     font-size: 140%;
+    cursor: pointer;
   }
 }
 </style>
