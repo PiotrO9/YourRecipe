@@ -1,8 +1,9 @@
-import type Recipe from "../Recipe"
+import type Recipe from "../Recipe";
 
 type DetailViewDataTypes = {
-    recipe: null | Recipe, 
-    imageFullPath: undefined | string
-}
+  recipe: null | Recipe;
+  imageFullPath: undefined | string;
+  prepareTime: string;
+};
 
-export default DetailViewDataTypes
+export default DetailViewDataTypes;

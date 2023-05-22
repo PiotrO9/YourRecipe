@@ -9,7 +9,7 @@
             <div class="RecipeDatas__content--info">
                 <section class="left">
                     <p>{{ recipe?.description }}</p>
-                    <p>Czas przygotowania: {{ recipe?.prepareTime }}</p>
+                    <p>Czas przygotowania: {{ prepareTime }}</p>
                     <div>
                         <p>Trudność: </p>
                         <fa v-for="i in recipe?.difficulty" 
@@ -39,6 +39,7 @@ import type DetailViewDataTypes from '@/types/ViewsDataTypes/DetailViewDataTypes
 import CombineFullImagePath from '@/utils/CombineFullImagePath';
 import type Recipe from '@/types/Recipe';
 import Ingredient from '@/components/Common-components/Ingredient.vue';
+import TimeConverter from '@/utils/TimeConverter';
 
 export default defineComponent ({
     components: {
@@ -47,7 +48,8 @@ export default defineComponent ({
     data(): DetailViewDataTypes {
         return {
             recipe: null,
-            imageFullPath: undefined
+            imageFullPath: undefined,
+            prepareTime: "0 min"
         }
     },
     computed: {
@@ -104,6 +106,9 @@ export default defineComponent ({
                 });
             }
         }
+
+        const timeConverter: TimeConverter = new TimeConverter()
+        this.prepareTime = timeConverter.convert(this.recipe.prepareTime)
     }
 })
 </script>
