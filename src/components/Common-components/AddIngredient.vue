@@ -3,7 +3,18 @@
     <input type="text" placeholder="Składnik" v-model="IngredientData.name">
     <input type="number" placeholder="Ilość" min="1">
     <select>
-
+        <optgroup label="Płynne">
+            <option value="ml">ml</option>
+            <option value="l">litr</option>
+        </optgroup>
+        <optgroup label="Sypkie">
+            <option value="g">g</option>
+            <option value="kg">kg</option>
+        </optgroup>
+        <optgroup label="Inne">
+            <option value="szczypta">szczypta</option>
+            <option value="sztuka">sztuka</option>
+        </optgroup>
     </select>
     <button @click="HandleIngredientRemoving">
         X
@@ -60,6 +71,11 @@ export default defineComponent ({
         border: 2px solid $Orange;
         border-top-right-radius: 8px;
         border-bottom-right-radius: 8px;
+        appearance: none;
+        -webkit-appearance: none;
+        text-indent: 1px;
+        text-overflow: '';
+        padding-left: 0.6rem;
     }
 
     button {

@@ -1,6 +1,6 @@
 <template>
     <div class="SetStar" >
-        <fa icon="fa-solid fa-star" :class="{ gold: StarState}"
+        <fa icon="fa-solid fa-star" :class="{ selected: StarState}"
             @mouseenter="HandleStarHover"/>
     </div>
 </template>
@@ -36,7 +36,7 @@ export default defineComponent ({
         @include SquareSize(100%);
         cursor: pointer;
         
-        &.gold {
+        &.selected {
             color: $Orange;
         }
     }
