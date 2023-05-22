@@ -1,8 +1,7 @@
 <template>
-    <div class="SetStar">
-        <fa icon="fa-solid fa-star"
-            @mouseenter="HandleStarHover"
-            @click="HandleStarClick"/>
+    <div class="SetStar" >
+        <fa icon="fa-solid fa-star" :class="{ gold: StarState}"
+            @mouseenter="HandleStarHover"/>
     </div>
 </template>
 
@@ -10,21 +9,18 @@
 import { defineComponent } from 'vue';
 export default defineComponent ({
     props: {
-        StarClick: {
+        StarHover: {
             type: Function,
             required: true
         },
-        StarHover: {
-            type: Function,
+        StarState: {
+            type: Boolean,
             required: true
         }
     },
     methods: {
         HandleStarHover() {
-            this.StarHover(1)
-        },
-        HandleStarClick() {
-            this.StarClick(2)
+            this.StarHover(this.$.vnode.key)
         }
     }
 })
@@ -38,7 +34,8 @@ export default defineComponent ({
 
     svg {
         @include SquareSize(100%);
-
+        cursor: pointer;
+        
         &.gold {
             color: $Orange;
         }

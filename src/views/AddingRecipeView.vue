@@ -11,16 +11,10 @@
     <div class="mainContent__difficulty">
       <p>Poziom trudności <span>*</span></p>
       <div class="mainContent__difficulty--stars">
-        <SetStar :StarHover="HandleStarHover" 
-                :StarClick="HandleStarClick"/>
-        <SetStar :StarHover="HandleStarHover" 
-                :StarClick="HandleStarClick"/>
-        <SetStar :StarHover="HandleStarHover" 
-                :StarClick="HandleStarClick"/>
-        <SetStar :StarHover="HandleStarHover" 
-                :StarClick="HandleStarClick"/>
-        <SetStar :StarHover="HandleStarHover" 
-                :StarClick="HandleStarClick"/>
+        <SetStar v-for="i in 5" 
+                :key="i"
+                :StarHover="HandleStarHover" 
+                :StarState="StarsSelected[i - 1]"/>
       </div>
     </div>
     <div class="mainContent__time">
@@ -58,13 +52,19 @@ export default defineComponent ({
     SetStar,
     AddIngredient
   },
-  data(): { Ingredients:Ingredient[] } {
+  data(): { Ingredients:Ingredient[], StarsSelected: Boolean[] } {
     return {
-      Ingredients: []
+      Ingredients: [],
+      StarsSelected: [true, false, false, false, false]
     }
   },
   methods: {
     HandleStarHover(starNumber: number) {
+      this.StarsSelected.fill(false)
+
+      for(let i = 0; i < starNumber; i++) {
+        this.StarsSelected[i] = true
+      }
       console.log(starNumber)
     },
     HandleStarClick(starNumber: number) {
