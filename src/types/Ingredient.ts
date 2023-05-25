@@ -10,6 +10,10 @@ class Ingredient {
     this.amount = amount;
     this.unit = unit;
   }
+
+  getId(): number {
+    return this.id;
+  }
 }
 
 export default Ingredient;

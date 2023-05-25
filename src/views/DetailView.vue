@@ -1,34 +1,31 @@
 <template>
-  <div class="detailView">
-    <img class="mainImage" :src=imageFullPath :alt=recipe?.title>
+    <div class="detailView">
+        <img class="mainImage" :src=imageFullPath :alt=recipe?.title>
         <h1 id="MainRecipeName"></h1>
-    <div class="RecipeDatas" id="RecipeDatas">
-        <div class="RecipeDatas__content">
-            <p>{{ recipe?.title }}</p>
-            <hr>
-            <div class="RecipeDatas__content--info">
-                <section class="left">
-                    <p>{{ recipe?.description }}</p>
-                    <p>Czas przygotowania: {{ prepareTime }}</p>
-                    <div>
-                        <p>Trudność: </p>
-                        <fa v-for="i in recipe?.difficulty" 
-                            :key="i" 
-                            icon="fa-solid fa-star"/>
-                    </div>
-                </section>
-                <section class="right">
-                    <p>Składniki</p>
-                    <div class="Ingredients">
-                        <Ingredient v-for="(ingredient, index) in recipe?.ingredients" 
-                        :key="index"
-                        :ingredients="ingredient"/>
-                    </div>
-                </section>
+        <div class="RecipeDatas" id="RecipeDatas">
+            <div class="RecipeDatas__content">
+                <p>{{ recipe?.title }}</p>
+                <hr>
+                <div class="RecipeDatas__content--info">
+                    <section class="left">
+                        <p>{{ recipe?.description }}</p>
+                        <p>Czas przygotowania: {{ prepareTime }}</p>
+                        <div>
+                            <p>Trudność: </p>
+                            <fa v-for="i in recipe?.difficulty" :key="i" icon="fa-solid fa-star" />
+                        </div>
+                    </section>
+                    <section class="right">
+                        <p>Składniki</p>
+                        <div class="Ingredients">
+                            <Ingredient v-for="(ingredient, index) in recipe?.ingredients" :key="index"
+                                :ingredients="ingredient" />
+                        </div>
+                    </section>
+                </div>
             </div>
         </div>
     </div>
-  </div>
 </template>
 
 <script lang="ts">
@@ -41,7 +38,7 @@ import type Recipe from '@/types/Recipe';
 import Ingredient from '@/components/Common-components/Ingredient.vue';
 import TimeConverter from '@/utils/TimeConverter';
 
-export default defineComponent ({
+export default defineComponent({
     components: {
         Ingredient
     },
@@ -60,7 +57,7 @@ export default defineComponent ({
     mounted() {
         this.recipe = this.detailObject.$state.detailRecipe as Recipe
 
-        if(this.recipe !== null && this.recipe !== undefined) {
+        if (this.recipe !== null && this.recipe !== undefined) {
             this.imageFullPath = CombineFullImagePath(this.recipe.ImagePath)
         }
         else {
@@ -73,13 +70,13 @@ export default defineComponent ({
             loop: false,
             typingSpeed: 90
         })
-        
+
         typeWriter.typeString(this.recipe?.title).start()
 
         const RecipeDatas: HTMLElement | null = document.getElementById("RecipeDatas")
 
         setTimeout(() => {
-            RecipeDatas?.scrollIntoView({behavior: 'smooth'})
+            RecipeDatas?.scrollIntoView({ behavior: 'smooth' })
         }, 1500);
 
         const leftElements: HTMLCollection | undefined = document.querySelector(".left")?.children
@@ -87,20 +84,20 @@ export default defineComponent ({
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                if(entry.isIntersecting) {
+                if (entry.isIntersecting) {
                     entry.target.classList.add('show')
                 }
             })
         })
 
-        if(leftElements != undefined && rightElements != undefined) {   
-            for(let i = 0; i < leftElements.length;i++) {
+        if (leftElements != undefined && rightElements != undefined) {
+            for (let i = 0; i < leftElements.length; i++) {
                 setTimeout(() => {
                     observer.observe(leftElements[i])
                 });
             }
-            
-            for(let i = 0; i < rightElements.length;i++) {
+
+            for (let i = 0; i < rightElements.length; i++) {
                 setTimeout(() => {
                     observer.observe(rightElements[i])
                 });
@@ -149,7 +146,7 @@ export default defineComponent ({
         font-family: "Kaushan Script";
         user-select: none;
         text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-        
+
         @media (max-width: 1024px) {
             display: none;
         }
@@ -161,7 +158,7 @@ export default defineComponent ({
         height: 100vh;
         padding-top: -10px;
         background-color: $CremeBackground;
-        
+
         &__content {
             width: 70%;
             height: 100%;
@@ -210,7 +207,7 @@ export default defineComponent ({
                 @media (max-width: $VerySmallWidth) {
                     flex-direction: column;
                 }
-                
+
                 .left {
                     width: 40%;
                     height: 100%;
@@ -231,7 +228,7 @@ export default defineComponent ({
                     p {
                         font-size: 1.4rem;
                         margin-bottom: 15px;
-                    
+
                         &:nth-child(1) {
                             text-align: start;
                             font-size: 1.6rem;
@@ -290,7 +287,7 @@ export default defineComponent ({
                         }
                     }
                 }
-                
+
                 .right {
                     width: 60%;
                     height: 100%;
@@ -335,6 +332,7 @@ export default defineComponent ({
             transform: translateX(-100vw);
             opacity: 0;
         }
+
         100% {
             transform: translateX(0);
             opacity: 1;
@@ -346,6 +344,7 @@ export default defineComponent ({
             transform: translateX(100vw);
             opacity: 0;
         }
+
         100% {
             transform: translateX(0);
             opacity: 1;

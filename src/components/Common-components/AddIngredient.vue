@@ -1,35 +1,38 @@
 <template>
-  <div v-if="IngredientData" class="AddIngredient">
-    <input type="text" placeholder="Składnik" v-model="IngredientData.name">
-    <input type="number" placeholder="Ilość" min="1">
-    <select>
-        <optgroup label="Płynne">
-            <option value="ml">ml</option>
-            <option value="l">litr</option>
-        </optgroup>
-        <optgroup label="Sypkie">
-            <option value="g">g</option>
-            <option value="kg">kg</option>
-        </optgroup>
-        <optgroup label="Inne">
-            <option value="szczypta">szczypta</option>
-            <option value="sztuka">sztuka</option>
-        </optgroup>
-    </select>
-    <button @click="HandleIngredientRemoving">
-        X
-    </button>
-  </div>
+    <div v-if="IngredientData" class="AddIngredient">
+        <input type="text" placeholder="Składnik" v-model="IngredientData.name" @input="UpdateIngredientData">
+        <input type="number" placeholder="Ilość" min="1" v-model="IngredientData.amount" @input="UpdateIngredientData">
+        <select @change="UpdateIngredientData" v-model="IngredientData.unit">
+            <optgroup label="Płynne">
+                <option value="ml">ml</option>
+                <option value="l">litr</option>
+            </optgroup>
+            <optgroup label="Sypkie">
+                <option value="g">g</option>
+                <option value="kg">kg</option>
+            </optgroup>
+            <optgroup label="Inne">
+                <option value="szczypta">szczypta</option>
+                <option value="sztuka">sztuka</option>
+            </optgroup>
+        </select>
+        <button @click="HandleIngredientRemoving">
+            X
+        </button>
+    </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 
-export default defineComponent ({
-    props: ['RemoveIngredient', 'IngredientData'],
+export default defineComponent({
+    props: ['RemoveIngredient', 'IngredientData', 'UpdateIngredient'],
     methods: {
         HandleIngredientRemoving() {
             this.RemoveIngredient(this.$.vnode.key)
+        },
+        UpdateIngredientData() {
+            this.$props.UpdateIngredient(this.IngredientData)
         }
     }
 })
@@ -37,7 +40,7 @@ export default defineComponent ({
 </script>
 
 <style lang="scss">
-@import  "../../GlobalStyles/variabless.scss";
+@import "../../GlobalStyles/variabless.scss";
 
 * {
     font-family: "Sora";
@@ -59,7 +62,7 @@ export default defineComponent ({
         border-top-left-radius: 8px;
         border-bottom-left-radius: 8px;
         font-size: 100%;
-        text-align: center; 
+        text-align: center;
     }
 
     input[type=number] {
@@ -89,5 +92,4 @@ export default defineComponent ({
         cursor: pointer;
     }
 }
-
 </style>

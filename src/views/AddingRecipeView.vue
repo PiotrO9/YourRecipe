@@ -4,17 +4,12 @@
     <hr>
     <div class="mainContent__title">
       <p>Tytuł <span>*</span></p>
-      <input type="text" 
-        placeholder="Nazwa przepisu" 
-        autocomplete="none">
+      <input type="text" placeholder="Nazwa przepisu" autocomplete="none">
     </div>
     <div class="mainContent__difficulty">
       <p>Poziom trudności <span>*</span></p>
       <div class="mainContent__difficulty--stars">
-        <SetStar v-for="i in 5" 
-                :key="i"
-                :StarHover="HandleStarHover" 
-                :StarState="StarsSelected[i - 1]"/>
+        <SetStar v-for="i in 5" :key="i" :StarHover="HandleStarHover" :StarState="StarsSelected[i - 1]" />
       </div>
     </div>
     <div class="mainContent__time">
@@ -28,17 +23,15 @@
     <div class="mainContent__ingredients">
       <p>Składniki <span>*</span></p>
       <div class="mainContent__ingredients--collection">
-        <AddIngredient v-for="i in Ingredients.length" 
-          :key="i"
-          :RemoveIngredient="RemoveIngredient"
-          :IngredientData="Ingredients[i]"/>
+        <AddIngredient v-for="i in Ingredients.length" :key="i" :RemoveIngredient="RemoveIngredient"
+          :IngredientData="Ingredients[i]" :UpdateIngredient="HandleUpgradeIngredientData" />
       </div>
       <button @click="AddIngredient">+</button>
     </div>
     <button class="SubmitButton">
       Dodaj
     </button>
-</main>
+  </main>
 </template>
 
 <script lang="ts">
@@ -47,12 +40,12 @@ import SetStar from '@/components/Common-components/SetStar.vue'
 import AddIngredient from '@/components/Common-components/AddIngredient.vue';
 import Ingredient from '@/types/Ingredient'
 
-export default defineComponent ({
+export default defineComponent({
   components: {
     SetStar,
     AddIngredient
   },
-  data(): { Ingredients:Ingredient[], StarsSelected: Boolean[] } {
+  data(): { Ingredients: Ingredient[], StarsSelected: Boolean[] } {
     return {
       Ingredients: [],
       StarsSelected: [true, false, false, false, false]
@@ -62,7 +55,7 @@ export default defineComponent ({
     HandleStarHover(starNumber: number) {
       this.StarsSelected.fill(false)
 
-      for(let i = 0; i < starNumber; i++) {
+      for (let i = 0; i < starNumber; i++) {
         this.StarsSelected[i] = true
       }
       console.log(starNumber)
@@ -71,13 +64,22 @@ export default defineComponent ({
       console.log(starNumber)
     },
     AddIngredient() {
-      let index = (this.Ingredients.length > 0) ? this.Ingredients.length : 0;
+      let index = (this.Ingredients.length > 0) ? this.Ingredients.length + 1 : 0;
 
-      const newIngredient = new Ingredient(index,"",0,"");
+      const newIngredient = new Ingredient(index, "", 0, "");
       this.Ingredients.push(newIngredient)
     },
     RemoveIngredient(id: number) {
       this.Ingredients.splice(id, 1)
+    },
+    HandleUpgradeIngredientData(ingredient: Ingredient) {
+      this.Ingredients[ingredient.getId() - 1] = ingredient
+      console.log(this.Ingredients)
+    }
+  },
+  watch: {
+    Ingredients() {
+      console.log(this.Ingredients)
     }
   }
 })
@@ -110,19 +112,24 @@ main {
   }
 
   .mainContent {
-    &__title, &__difficulty, &__time, &__description, &__ingredients {
+
+    &__title,
+    &__difficulty,
+    &__time,
+    &__description,
+    &__ingredients {
       @include flex-center;
       width: max(25%, 300px);
       flex-direction: column;
       margin-bottom: 2rem;
 
-       p {
-          font-size: 1.5rem;
+      p {
+        font-size: 1.5rem;
 
-          span {
-            color: red;
-          }
-       }
+        span {
+          color: red;
+        }
+      }
     }
 
     &__title {
@@ -235,7 +242,7 @@ main {
           -webkit-transition: font-size 0.5s, transform 0.5s;
         }
       }
-    } 
+    }
   }
 
   .SubmitButton {
