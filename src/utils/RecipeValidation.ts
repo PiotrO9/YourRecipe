@@ -1,7 +1,5 @@
-import type Recipe from "@/types/Recipe";
 import type Ingredient from "@/types/Ingredient";
 import IsFirstLetterUpperCase from "./IsFirstLetterUpperCase";
-
 class RecipeValidation {
   private ingredients: Ingredient[];
   private title: string;
@@ -45,7 +43,7 @@ class RecipeValidation {
     return this.errorMessages;
   }
 
-  validateIngredients(): boolean {
+  private validateIngredients(): boolean {
     let finalDecision: boolean = true;
 
     for (let i = 0; i < this.ingredients.length; i++) {

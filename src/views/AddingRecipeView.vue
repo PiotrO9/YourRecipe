@@ -40,6 +40,7 @@ import SetStar from '@/components/Common-components/SetStar.vue'
 import AddIngredient from '@/components/Common-components/AddIngredient.vue';
 import Ingredient from '@/types/Ingredient'
 import type { AddingRecipeViewDataType } from '@/types/ViewsDataTypes/AddingRecipeViewDataTypes';
+import RecipeValidation from '@/utils/RecipeValidation'
 
 export default defineComponent({
   components: {
@@ -87,7 +88,14 @@ export default defineComponent({
       return biggestId
     },
     SubmitRecipe() {
+      const recipeValidator = new RecipeValidation(this.Ingredients as Ingredient[], this.Title, this.Duration).validate()
 
+      if (recipeValidator.length == 0) {
+        //Add recipe
+      }
+      else {
+        //Display modal with errors
+      }
     }
   }
 })
