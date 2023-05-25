@@ -23,8 +23,8 @@
     <div class="mainContent__ingredients">
       <p>Składniki <span>*</span></p>
       <div class="mainContent__ingredients--collection">
-        <AddIngredient v-for="i in Ingredients.length" :key="i" :RemoveIngredient="RemoveIngredient"
-          :IngredientData="Ingredients[i]" :UpdateIngredient="HandleUpgradeIngredientData" />
+        <AddIngredient v-for="(item, index) in Ingredients.length" :key="index" :RemoveIngredient="RemoveIngredient"
+          :IngredientData="Ingredients[index]" :UpdateIngredient="HandleUpgradeIngredientData" />
       </div>
       <button @click="AddIngredient">+</button>
     </div>
@@ -64,8 +64,7 @@ export default defineComponent({
       console.log(starNumber)
     },
     AddIngredient() {
-      let index = (this.Ingredients.length > 0) ? this.Ingredients.length + 1 : 0;
-
+      let index = this.getBiggestId() + 1
       const newIngredient = new Ingredient(index, "", 0, "");
       this.Ingredients.push(newIngredient)
     },
@@ -73,13 +72,18 @@ export default defineComponent({
       this.Ingredients.splice(id, 1)
     },
     HandleUpgradeIngredientData(ingredient: Ingredient) {
-      this.Ingredients[ingredient.getId() - 1] = ingredient
-      console.log(this.Ingredients)
-    }
-  },
-  watch: {
-    Ingredients() {
-      console.log(this.Ingredients)
+      this.Ingredients[ingredient.getId()] = ingredient
+    },
+    getBiggestId() {
+      if (this.Ingredients.length === 0) {
+        return -1;
+      }
+
+      const biggestId = this.Ingredients.reduce((biggest, item) => {
+        return item.getId() > biggest ? item.getId() : biggest;
+      }, this.Ingredients[0].getId())
+
+      return biggestId
     }
   }
 })
