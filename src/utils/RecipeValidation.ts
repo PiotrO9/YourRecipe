@@ -9,7 +9,7 @@ class RecipeValidation {
 
   private errorMessages: string[];
 
-  Validate(): string[] {
+  validate(): string[] {
     if (
       this.title === "" ||
       this.duration === 0 ||
@@ -26,7 +26,39 @@ class RecipeValidation {
       );
     }
 
+    if (this.duration < 5) {
+      this.errorMessages.push(
+        "Długość wykonywania posiłku musi wynosić conajmniej 5 minut"
+      );
+    }
+
+    if (this.ingredients.length < 3) {
+      this.errorMessages.push(
+        "Lista składników musi zawierać minimum 3 elementy"
+      );
+    } else {
+      if (!this.validateIngredients()) {
+        this.errorMessages.push("Wprowadź poprawne dane składników");
+      }
+    }
+
     return this.errorMessages;
+  }
+
+  validateIngredients(): boolean {
+    let finalDecision: boolean = true;
+
+    for (let i = 0; i < this.ingredients.length; i++) {
+      if (
+        this.ingredients[i].getName().length < 3 ||
+        this.ingredients[i].getAmount() < 1 ||
+        this.ingredients[i].getUnit() === ""
+      ) {
+        finalDecision = false;
+      }
+    }
+
+    return finalDecision;
   }
 
   constructor(ingredients: Ingredient[], title: string, duration: number) {

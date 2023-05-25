@@ -14,6 +14,18 @@ class Ingredient {
   getId(): number {
     return this.id;
   }
+
+  getName(): string {
+    return this.name;
+  }
+
+  getAmount(): number {
+    return this.amount;
+  }
+
+  getUnit(): string {
+    return this.unit;
+  }
 }
 
 export default Ingredient;
