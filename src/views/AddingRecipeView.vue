@@ -4,7 +4,7 @@
     <hr>
     <div class="mainContent__title">
       <p>Tytuł <span>*</span></p>
-      <input type="text" placeholder="Nazwa przepisu" autocomplete="none">
+      <input type="text" placeholder="Nazwa przepisu" autocomplete="none" v-model="Title">
     </div>
     <div class="mainContent__difficulty">
       <p>Poziom trudności <span>*</span></p>
@@ -14,11 +14,11 @@
     </div>
     <div class="mainContent__time">
       <p>Czas trwania <span>*</span></p>
-      <input type="number" min="5" placeholder="5 min">
+      <input type="number" min="5" placeholder="5 min" v-model="Duration">
     </div>
     <div class="mainContent__description">
       <p>Opis</p>
-      <textarea placeholder="Opis przepisu..."></textarea>
+      <textarea placeholder="Opis przepisu..." v-model="Description"></textarea>
     </div>
     <div class="mainContent__ingredients">
       <p>Składniki <span>*</span></p>
@@ -28,7 +28,7 @@
       </div>
       <button @click="AddIngredient">+</button>
     </div>
-    <button class="SubmitButton">
+    <button class="SubmitButton" @click="SubmitRecipe">
       Dodaj
     </button>
   </main>
@@ -39,16 +39,20 @@ import { defineComponent } from 'vue';
 import SetStar from '@/components/Common-components/SetStar.vue'
 import AddIngredient from '@/components/Common-components/AddIngredient.vue';
 import Ingredient from '@/types/Ingredient'
+import type { AddingRecipeViewDataType } from '@/types/ViewsDataTypes/AddingRecipeViewDataTypes';
 
 export default defineComponent({
   components: {
     SetStar,
     AddIngredient
   },
-  data(): { Ingredients: Ingredient[], StarsSelected: Boolean[] } {
+  data(): AddingRecipeViewDataType {
     return {
       Ingredients: [],
-      StarsSelected: [true, false, false, false, false]
+      StarsSelected: [true, false, false, false, false],
+      Title: "",
+      Duration: 5,
+      Description: ""
     }
   },
   methods: {
@@ -58,9 +62,6 @@ export default defineComponent({
       for (let i = 0; i < starNumber; i++) {
         this.StarsSelected[i] = true
       }
-      console.log(starNumber)
-    },
-    HandleStarClick(starNumber: number) {
       console.log(starNumber)
     },
     AddIngredient() {
@@ -84,6 +85,9 @@ export default defineComponent({
       }, this.Ingredients[0].getId())
 
       return biggestId
+    },
+    SubmitRecipe() {
+
     }
   }
 })
