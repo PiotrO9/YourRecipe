@@ -6,4 +6,6 @@ export type AddingRecipeViewDataType = {
   Title: string;
   Duration: number;
   Description: string;
+  IsError: boolean;
+  ErrorList: string[];
 };

@@ -1,5 +1,16 @@
 <template>
   <main>
+    <transition name="error">
+      <div class="errorModal" v-if="IsError">
+        <ul>
+          <li v-for="(item, index) in ErrorList" :key="index">
+            {{ item }}</li>
+        </ul>
+        <button @click="CloseModal">
+          OK
+        </button>
+      </div>
+    </transition>
     <h1>Dodaj nowy przepis</h1>
     <hr>
     <div class="mainContent__title">
@@ -53,7 +64,9 @@ export default defineComponent({
       StarsSelected: [true, false, false, false, false],
       Title: "",
       Duration: 5,
-      Description: ""
+      Description: "",
+      IsError: true,
+      ErrorList: ["błąd 1",]
     }
   },
   methods: {
@@ -96,6 +109,9 @@ export default defineComponent({
       else {
         //Display modal with errors
       }
+    },
+    CloseModal() {
+      this.IsError = false
     }
   }
 })
@@ -114,6 +130,52 @@ main {
   flex-direction: column;
   align-items: center;
   margin-bottom: 2rem;
+  position: relative;
+
+  .errorModal {
+    width: 30%;
+    min-width: 200px;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    background-color: white;
+    border: 2px solid $Orange;
+    border-radius: 8px;
+
+    ul {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      list-style-type: none;
+
+      li {
+        text-decoration: none;
+        margin-top: 3px;
+        margin-bottom: 3px;
+        text-align: center;
+      }
+    }
+
+    button {
+      border: 2px solid $Orange;
+      width: 100px;
+      padding-top: 0.7rem;
+      padding-bottom: 0.7rem;
+      font-size: 100%;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  }
 
   h1 {
     text-align: center;
