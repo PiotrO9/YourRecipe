@@ -1,7 +1,7 @@
 <template>
   <main>
-    <transition name="error">
-      <div class="errorModal" v-if="IsError">
+    <Transition name="error" mode="out-in">
+      <div class="errorModal error-enter-active" v-if="IsError">
         <ul>
           <li v-for="(item, index) in ErrorList" :key="index">
             {{ item }}</li>
@@ -10,7 +10,7 @@
           OK
         </button>
       </div>
-    </transition>
+    </Transition>
     <h1>Dodaj nowy przepis</h1>
     <hr>
     <div class="mainContent__title">
@@ -65,7 +65,7 @@ export default defineComponent({
       Title: "",
       Duration: 5,
       Description: "",
-      IsError: true,
+      IsError: false,
       ErrorList: ["błąd 1",]
     }
   },
@@ -107,7 +107,8 @@ export default defineComponent({
         //Add recipe
       }
       else {
-        //Display modal with errors
+        this.ErrorList = recipeValidator
+        this.IsError = true
       }
     },
     CloseModal() {
@@ -124,6 +125,26 @@ export default defineComponent({
   font-family: "Sora";
 }
 
+@keyframes slide-in {
+  0% {
+    transform: translateY(-100vh);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
 main {
   @include SquareSize(100%);
   display: flex;
@@ -131,6 +152,14 @@ main {
   align-items: center;
   margin-bottom: 2rem;
   position: relative;
+
+  .error-enter-active {
+    animation: slide-in 0.6s forwards;
+  }
+
+  .error-leave-active {
+    animation: slide-out 0.6s forwards;
+  }
 
   .errorModal {
     width: 30%;
