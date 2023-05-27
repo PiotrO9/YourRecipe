@@ -6,12 +6,12 @@ class BuildRecipe {
   private title: string;
   private description: string;
   private duration: number;
-  private starSelected: boolean[];
+  private starSelected: Boolean[];
   private ingredients: Ingredient[];
 
   build(): Recipe {
     const trueCount = this.starSelected.reduce(
-      (count: number, value: boolean) => {
+      (count: number, value: Boolean) => {
         if (value === true) {
           return count + 1;
         } else {
@@ -65,7 +65,7 @@ class BuildRecipe {
     title: string,
     description: string,
     duration: number,
-    starSelected: boolean[],
+    starSelected: Boolean[],
     ingredients: Ingredient[]
   ) {
     this.id = id;

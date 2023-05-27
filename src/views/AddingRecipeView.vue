@@ -52,6 +52,7 @@ import AddIngredient from '@/components/Common-components/AddIngredient.vue';
 import Ingredient from '@/types/Ingredient'
 import type { AddingRecipeViewDataType } from '@/types/ViewsDataTypes/AddingRecipeViewDataTypes';
 import RecipeValidation from '@/utils/RecipeValidation'
+import BuildRecipe from '@/utils/BuildRecipe'
 
 export default defineComponent({
   components: {
@@ -107,10 +108,13 @@ export default defineComponent({
         let myRecipes = localStorage.getItem("myRecipes")
 
         if (myRecipes !== null) {
-
+          console.log("Nie jest pusta")
         }
         else {
-
+          const buildRecipe = new BuildRecipe(8, this.Title, this.Description, this.Duration, this.StarsSelected, this.Ingredients as Ingredient[])
+          const newRecipe = buildRecipe.build()
+          const myRecipesList = [newRecipe]
+          localStorage.setItem("myRecipes", JSON.stringify(myRecipesList))
         }
       }
       else {
