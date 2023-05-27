@@ -104,7 +104,14 @@ export default defineComponent({
       const recipeValidator = new RecipeValidation(this.Ingredients as Ingredient[], this.Title, this.Duration).validate()
 
       if (recipeValidator.length == 0) {
-        //Add recipe
+        let myRecipes = localStorage.getItem("myRecipes")
+
+        if (myRecipes !== null) {
+
+        }
+        else {
+
+        }
       }
       else {
         this.ErrorList = recipeValidator
@@ -188,8 +195,8 @@ main {
 
       li {
         text-decoration: none;
-        margin-top: 3px;
-        margin-bottom: 3px;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
         text-align: center;
       }
     }
