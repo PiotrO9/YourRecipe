@@ -53,6 +53,7 @@ import Ingredient from '@/types/Ingredient'
 import type { AddingRecipeViewDataType } from '@/types/ViewsDataTypes/AddingRecipeViewDataTypes';
 import RecipeValidation from '@/utils/RecipeValidation'
 import BuildRecipe from '@/utils/BuildRecipe'
+import type Recipe from '@/types/Recipe';
 
 export default defineComponent({
   components: {
@@ -108,7 +109,16 @@ export default defineComponent({
         let myRecipes = localStorage.getItem("myRecipes")
 
         if (myRecipes !== null) {
-          console.log("Nie jest pusta")
+          const myRecipeList: Recipe[] = JSON.parse(myRecipes)
+
+          const biggestId = myRecipeList.reduce((biggest, item: Recipe) => {
+            return item.id > biggest ? item.id : biggest;
+          }, myRecipeList[0].id)
+
+          const buildRecipe = new BuildRecipe(biggestId + 1, this.Title, this.Description, this.Duration, this.StarsSelected, this.Ingredients as Ingredient[])
+          const newRecipe = buildRecipe.build()
+
+          myRecipeList.push(newRecipe)
         }
         else {
           const buildRecipe = new BuildRecipe(8, this.Title, this.Description, this.Duration, this.StarsSelected, this.Ingredients as Ingredient[])
