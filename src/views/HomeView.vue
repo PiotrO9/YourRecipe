@@ -1,5 +1,5 @@
 <template>
-  <AppHeader />
+  <AppHeader :SetFavouriteRecipes="HandleSettingFavouriteRecipes" />
   <div class="AppContent">
     <main>
       <div class="Heading">
@@ -37,7 +37,10 @@ import AppHeader from '@/components/Core-components/AppHeader.vue';
 import AppAside from '@/components/Core-components/AppAside.vue'
 import LocalRecipes from '@/datas/localRecipes.json'
 import Recipe from '@/components/Common-components/Recipe.vue'
+import type { Recipe as RecipeType } from '@/types/Recipe'
 import type HomeViewDataTypes from '@/types/ViewsDataTypes/HomeViewDataTypes';
+import { useFavourites } from '@/stores/favourites';
+
 
 export default defineComponent({
   components: {
@@ -48,6 +51,32 @@ export default defineComponent({
   data(): HomeViewDataTypes {
     return {
       recipes: null,
+    }
+  },
+  computed: {
+    Favourites() {
+      return useFavourites()
+    }
+  },
+  methods: {
+    HandleSettingFavouriteRecipes() {
+      const myRecipes = localStorage.getItem("myRecipes")
+      let myRecipesList = []
+      if (myRecipes != null) {
+        myRecipesList = JSON.parse(myRecipes)
+      }
+
+      const allRecipes = [...LocalRecipes, ...myRecipesList] as RecipeType[]
+      const favouriteRecipesIds = this.Favourites.getFavourites
+
+      const result: RecipeType[] = []
+      allRecipes.forEach(item => {
+        if (favouriteRecipesIds.includes(item.id)) {
+          result.push(item)
+        }
+      });
+
+      this.recipes = result
     }
   },
   mounted() {
