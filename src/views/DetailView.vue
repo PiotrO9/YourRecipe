@@ -1,6 +1,7 @@
 <template>
     <div class="detailView">
-        <img class="mainImage" :src=imageFullPath :alt=recipe?.title>
+        <img v-if="imageFullPath == ''" class="mainImage" src="/Recipe-images/pusty.jpg" :alt="recipe?.title">
+        <img v-else class="mainImage" :src=imageFullPath :alt=recipe?.title>
         <h1 id="MainRecipeName"></h1>
         <div class="RecipeDatas" id="RecipeDatas">
             <div class="RecipeDatas__content">
@@ -58,7 +59,7 @@ export default defineComponent({
         this.recipe = this.detailObject.$state.detailRecipe as Recipe
 
         if (this.recipe !== null && this.recipe !== undefined) {
-            this.imageFullPath = CombineFullImagePath(this.recipe.ImagePath)
+            this.imageFullPath = (this.recipe.ImagePath === "") ? "" : CombineFullImagePath(this.recipe.ImagePath)
         }
         else {
             this.$router.push({ name: "home" })

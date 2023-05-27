@@ -78,6 +78,11 @@ export default defineComponent({
     input[type=number] {
         text-align: center;
 
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+        }
+
         @media (max-width: $VerySmallWidth) {
             max-width: 100px;
         }

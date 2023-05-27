@@ -194,6 +194,7 @@ img {
     width: 20%;
     display: flex;
     align-items: center;
+    justify-content: end;
     margin-right: 15px;
     gap: 10px;
 
