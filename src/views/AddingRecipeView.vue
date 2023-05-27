@@ -233,12 +233,20 @@ main {
     text-align: center;
     margin-top: 1rem;
     margin-bottom: 1rem;
+
+    @media (max-width: $MobileMediumWidth) {
+      font-size: 1.6rem;
+    }
   }
 
   hr {
     width: 90%;
     margin-top: 1rem;
     margin-bottom: 1rem;
+
+    @media (max-width: $MobileMediumWidth) {
+      width: 100%;
+    }
   }
 
   .mainContent {
@@ -252,6 +260,10 @@ main {
       width: max(25%, 300px);
       flex-direction: column;
       margin-bottom: 2rem;
+
+      @media (max-width: $MobileMediumWidth) {
+        width: 250px;
+      }
 
       p {
         font-size: 1.5rem;
@@ -352,6 +364,10 @@ main {
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
+
+        @media (max-width: $VerySmallWidth) {
+          max-width: 400px;
+        }
       }
 
       button {

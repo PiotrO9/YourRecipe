@@ -42,7 +42,7 @@ export default defineComponent({
     HandleTitleCLick() {
       this.detailObject.setRecipeDetail(this.$props.recipe)
       this.$router.push({
-        name: "details"
+        name: "recipe-details"
       })
     }
   },

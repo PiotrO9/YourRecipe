@@ -52,6 +52,8 @@ export default defineComponent({
     display: grid;
     grid-template-columns: 6fr 2fr 3fr 1fr;
 
+
+
     input {
         outline: none;
         border: 2px solid $Orange;
@@ -63,10 +65,26 @@ export default defineComponent({
         border-bottom-left-radius: 8px;
         font-size: 100%;
         text-align: center;
+
+        @media (max-width: $VerySmallWidth) {
+            max-width: 180px;
+        }
+
+        @media (max-width: $MobileMediumWidth) {
+            max-width: 120px;
+        }
     }
 
     input[type=number] {
         text-align: center;
+
+        @media (max-width: $VerySmallWidth) {
+            max-width: 100px;
+        }
+
+        @media (max-width: $MobileMediumWidth) {
+            width: 60px;
+        }
     }
 
     select {
@@ -79,11 +97,16 @@ export default defineComponent({
         text-indent: 1px;
         text-overflow: '';
         padding-left: 0.6rem;
+
+        @media (max-width: $MobileMediumWidth) {
+            width: 70px;
+        }
     }
 
     button {
         outline: none;
         border: none;
+        margin-left: 4px;
         background-color: $CremeBackground;
         font-size: 2rem;
         font-weight: bold;
