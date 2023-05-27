@@ -126,6 +126,8 @@ export default defineComponent({
           const myRecipesList = [newRecipe]
           localStorage.setItem("myRecipes", JSON.stringify(myRecipesList))
         }
+
+        this.$router.push({ name: "home" })
       }
       else {
         this.ErrorList = recipeValidator
