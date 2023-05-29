@@ -78,7 +78,6 @@ export default defineComponent({
       for (let i = 0; i < starNumber; i++) {
         this.StarsSelected[i] = true
       }
-      console.log(starNumber)
     },
     AddIngredient() {
       let index = this.getBiggestId() + 1

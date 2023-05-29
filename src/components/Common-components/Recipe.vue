@@ -1,6 +1,6 @@
 <template>
   <div class="Recipe">
-    <FavouriteIcon :id="$.vnode.key" />
+    <FavouriteIcon :id="recipe.id" />
     <img v-if="recipe != undefined && recipe.ImagePath != ''" class="Recipe__image" :src=imageFullPath />
     <img v-else class="Recipe__image" src="/Recipe-images/pusty.jpg" />
     <div class="Recipe__details">

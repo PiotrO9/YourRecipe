@@ -26,6 +26,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { useFavourites } from '@/stores/favourites';
 
 export default defineComponent({
     props: ['SetFavouriteRecipes', 'SetAllRecipes'],
@@ -34,11 +35,17 @@ export default defineComponent({
             showMenu: false
         }
     },
+    computed: {
+        Favourites() {
+            return useFavourites()
+        }
+    },
     methods: {
         ChangeMenuVisibility() {
             this.showMenu = !this.showMenu
         },
         AllRecipesClick() {
+            this.Favourites.removeAllFavourites
             this.$props.SetAllRecipes()
         },
         FavouriteRecipesClick() {

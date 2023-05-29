@@ -34,7 +34,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import AppHeader from '@/components/Core-components/AppHeader.vue';
-import AppAside from '@/components/Core-components/AppAside.vue'
 import LocalRecipes from '@/datas/localRecipes.json'
 import Recipe from '@/components/Common-components/Recipe.vue'
 import type { Recipe as RecipeType } from '@/types/Recipe'
@@ -45,7 +44,6 @@ import { useFavourites } from '@/stores/favourites';
 export default defineComponent({
   components: {
     AppHeader,
-    AppAside,
     Recipe
   },
   data(): HomeViewDataTypes {
@@ -65,7 +63,6 @@ export default defineComponent({
       if (myRecipes !== null) {
         const myRecipeList = JSON.parse(myRecipes)
         this.recipes = [...LocalRecipes, ...myRecipeList]
-        console.log(this.recipes)
       }
       else {
         this.recipes = LocalRecipes
@@ -90,7 +87,6 @@ export default defineComponent({
       });
 
       this.recipes = result
-      console.log(this.recipes)
     },
     HandleSettingAllRecipes() {
       this.SetAllRecipes()
