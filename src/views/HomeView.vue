@@ -1,5 +1,5 @@
 <template>
-  <AppHeader :SetFavouriteRecipes="HandleSettingFavouriteRecipes" />
+  <AppHeader :SetFavouriteRecipes="HandleSettingFavouriteRecipes" :SetAllRecipes="HandleSettingAllRecipes" />
   <div class="AppContent">
     <main>
       <div class="Heading">
@@ -59,7 +59,20 @@ export default defineComponent({
     }
   },
   methods: {
+    SetAllRecipes() {
+      const myRecipes = localStorage.getItem("myRecipes")
+
+      if (myRecipes !== null) {
+        const myRecipeList = JSON.parse(myRecipes)
+        this.recipes = [...LocalRecipes, ...myRecipeList]
+        console.log(this.recipes)
+      }
+      else {
+        this.recipes = LocalRecipes
+      }
+    },
     HandleSettingFavouriteRecipes() {
+      this.recipes = []
       const myRecipes = localStorage.getItem("myRecipes")
       let myRecipesList = []
       if (myRecipes != null) {
@@ -77,19 +90,14 @@ export default defineComponent({
       });
 
       this.recipes = result
+      console.log(this.recipes)
+    },
+    HandleSettingAllRecipes() {
+      this.SetAllRecipes()
     }
   },
   mounted() {
-    const myRecipes = localStorage.getItem("myRecipes")
-
-    if (myRecipes !== null) {
-      const myRecipeList = JSON.parse(myRecipes)
-      this.recipes = [...LocalRecipes, ...myRecipeList]
-      console.log(this.recipes)
-    }
-    else {
-      this.recipes = LocalRecipes
-    }
+    this.SetAllRecipes()
   }
 })
 </script>

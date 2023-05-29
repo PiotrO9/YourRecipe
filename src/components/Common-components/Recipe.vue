@@ -24,6 +24,7 @@ import FavouriteIcon from "@/components/Common-components/FavouriteIcon.vue"
 import type RecipeDataTypes from "@/types/RecipeDataTypes"
 
 export default defineComponent({
+  props: ['recipe'],
   components: {
     FavouriteIcon
   },
@@ -37,17 +38,24 @@ export default defineComponent({
       return useDetailObject()
     }
   },
-  props: ['recipe'],
   methods: {
     HandleTitleCLick() {
       this.detailObject.setRecipeDetail(this.$props.recipe)
       this.$router.push({
         name: "recipe-details"
       })
+    },
+    UpdateImagePath() {
+      this.imageFullPath = CombineFullImagePath(this.recipe.ImagePath)
     }
   },
   mounted() {
-    this.imageFullPath = CombineFullImagePath(this.recipe.ImagePath)
+    this.UpdateImagePath()
+  },
+  watch: {
+    recipe() {
+      this.UpdateImagePath()
+    }
   }
 })
 </script>

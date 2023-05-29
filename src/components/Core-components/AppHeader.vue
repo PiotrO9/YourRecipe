@@ -28,7 +28,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-    props: ['SetFavouriteRecipes'],
+    props: ['SetFavouriteRecipes', 'SetAllRecipes'],
     data() {
         return {
             showMenu: false
@@ -39,7 +39,7 @@ export default defineComponent({
             this.showMenu = !this.showMenu
         },
         AllRecipesClick() {
-            this.$router.push({ name: "home" })
+            this.$props.SetAllRecipes()
         },
         FavouriteRecipesClick() {
             this.$props.SetFavouriteRecipes()
