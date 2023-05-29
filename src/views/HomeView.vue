@@ -11,8 +11,9 @@
           <div class="Heading__right--searchContainer">
             <div class="Heading__right--searchContainer__input">
               <fa icon="fa-solid fa-magnifying-glass" />
-              <input type="text" id="SearchInput" placeholder="Wpisz czego szukasz..." autocomplete="none">
-              <button>
+              <input type="text" id="SearchInput" placeholder="Wpisz czego szukasz..." autocomplete="none"
+                v-model="searchInputValue">
+              <button @click="SearchRecipes">
                 Wyszukaj
               </button>
             </div>
@@ -24,8 +25,11 @@
           </div>
         </div>
       </div>
-      <div v-if="recipes != null" class="RecipesGrid">
+      <div v-if="recipes != null && recipes.length > 0" class="RecipesGrid">
         <Recipe v-for="(recipe, index) in recipes" :key="index" :recipe="recipe" />
+      </div>
+      <div v-else class="NoRecipes">
+        <span>Nie udało się znaleźć przepisów o podanych kryteriach</span>
       </div>
     </main>
   </div>
@@ -39,6 +43,7 @@ import Recipe from '@/components/Common-components/Recipe.vue'
 import type { Recipe as RecipeType } from '@/types/Recipe'
 import type HomeViewDataTypes from '@/types/ViewsDataTypes/HomeViewDataTypes';
 import { useFavourites } from '@/stores/favourites';
+import SearchRecipesByTitle from '@/utils/SearchRecipesByTitle'
 
 
 export default defineComponent({
@@ -49,6 +54,7 @@ export default defineComponent({
   data(): HomeViewDataTypes {
     return {
       recipes: null,
+      searchInputValue: ""
     }
   },
   computed: {
@@ -90,6 +96,10 @@ export default defineComponent({
     },
     HandleSettingAllRecipes() {
       this.SetAllRecipes()
+    },
+    SearchRecipes() {
+      this.SetAllRecipes()
+      this.recipes = SearchRecipesByTitle.search(this.recipes as RecipeType[], this.searchInputValue)
     }
   },
   mounted() {
@@ -129,6 +139,7 @@ export default defineComponent({
       width: 90%;
       height: 100%;
       min-height: 500px;
+      max-height: 700px;
       display: flex;
       margin-top: 2rem;
       background-color: $LightOrange;
@@ -446,6 +457,13 @@ export default defineComponent({
       @media (max-width: $SmallWidth) {
         width: 95%;
       }
+    }
+
+    .NoRecipes {
+      font-size: 2rem;
+      font-family: "Sora";
+      margin-top: 1rem;
+      text-align: center;
     }
   }
 }
