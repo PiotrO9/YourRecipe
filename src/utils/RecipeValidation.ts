@@ -1,4 +1,4 @@
-import type Ingredient from "@/types/Ingredient";
+import type Ingredient from "../types/Ingredient";
 import IsFirstLetterUpperCase from "./IsFirstLetterUpperCase";
 class RecipeValidation {
   private ingredients: Ingredient[];
