@@ -35,7 +35,7 @@ import Typewriter from "@/types/TypeWriter"
 import { useDetailObject } from '@/stores/detailObject';
 import type DetailViewDataTypes from '@/types/ViewsDataTypes/DetailViewDataTypes';
 import CombineFullImagePath from '@/utils/CombineFullImagePath';
-import type Recipe from '@/types/Recipe';
+import type { Recipe } from '@/types/Recipe';
 import Ingredient from '@/components/Common-components/Ingredient.vue';
 import TimeConverter from '@/utils/TimeConverter';
 

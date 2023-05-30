@@ -20,7 +20,7 @@
     <div class="mainContent__difficulty">
       <p>Poziom trudności <span>*</span></p>
       <div class="mainContent__difficulty--stars">
-        <SetStar v-for="i in 5" :key="i" :StarHover="HandleStarHover" :StarState="StarsSelected[i - 1]" />
+        <SetStar v-for="i in 5" :key="i" :StarHover="HandleStarHover" :StarState="(StarsSelected[i - 1]).valueOf()" />
       </div>
     </div>
     <div class="mainContent__time">
@@ -53,7 +53,7 @@ import Ingredient from '@/types/Ingredient'
 import type { AddingRecipeViewDataType } from '@/types/ViewsDataTypes/AddingRecipeViewDataTypes';
 import RecipeValidation from '@/utils/RecipeValidation'
 import BuildRecipe from '@/utils/BuildRecipe'
-import type Recipe from '@/types/Recipe';
+import type { Recipe } from '@/types/Recipe';
 
 export default defineComponent({
   components: {
