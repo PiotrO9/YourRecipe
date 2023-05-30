@@ -1,5 +1,5 @@
 import type Ingredient from "@/types/Ingredient";
-import type Recipe from "@/types/Recipe";
+import type { Recipe } from "@/types/Recipe";
 
 class BuildRecipe {
   private id: number;

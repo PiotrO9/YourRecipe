@@ -1,4 +1,5 @@
 import IsFirstLetterUpperCase from "../../utils/IsFirstLetterUpperCase";
+import { expect, test } from "@jest/globals";
 
 describe("Check if first letter is a Big letter ", () => {
   test("should return true", () => {

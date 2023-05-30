@@ -1,4 +1,4 @@
-import type Recipe from "../Recipe";
+import type { Recipe } from "../Recipe";
 
 type DetailViewDataTypes = {
   recipe: null | Recipe;

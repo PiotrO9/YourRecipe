@@ -1,5 +1,6 @@
 import TimeConverter from "../../utils/TimeConverter";
 const timeConverter = new TimeConverter();
+import { expect, test } from "@jest/globals";
 
 describe("Convert time which ", () => {
   test("is less than 60, should return response without hours", () => {
