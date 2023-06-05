@@ -1,25 +1,26 @@
 <template>
-  <div class="Ingredient">
-    <p>{{ $props.ingredients[0] }}</p>
-    <p>{{ $props.ingredients[1] }}</p>
-  </div>
+    <div class="Ingredient">
+        <p>{{ $props.ingredients[0] }}</p>
+        <p>{{ $props.ingredients[1] }}</p>
+    </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 
-export default defineComponent ({
+export default defineComponent({
     props: ['ingredients']
 })
 </script>
 
 <style scoped lang="scss">
 @import "../../GlobalStyles/variabless.scss";
+
 .Ingredient {
     display: flex;
     flex-direction: row;
-    gap: 1.5rem;
     justify-content: space-between;
+    gap: 1.5rem;
     margin-top: 0.6rem;
 
     p {

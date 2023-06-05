@@ -49,14 +49,14 @@ export default defineComponent({
       this.imageFullPath = CombineFullImagePath(this.recipe.ImagePath)
     }
   },
-  mounted() {
-    this.UpdateImagePath()
-  },
   watch: {
     recipe() {
       this.UpdateImagePath()
     }
-  }
+  },
+  mounted() {
+    this.UpdateImagePath()
+  },
 })
 </script>
 

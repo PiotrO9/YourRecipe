@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from 'vue';
+import { defineComponent } from 'vue';
 import { useFavourites } from '@/stores/favourites';
 
 export default defineComponent({
@@ -22,11 +22,6 @@ export default defineComponent({
     computed: {
         Favourites() {
             return useFavourites()
-        }
-    },
-    mounted() {
-        if (this.Favourites.getFavourites.includes(this.$props.id)) {
-            this.IconState = true
         }
     },
     methods: {
@@ -52,13 +47,11 @@ export default defineComponent({
     },
     watch: {
         id() {
-            if (this.Favourites.getFavourites.includes(this.$props.id)) {
-                this.IconState = true
-            }
-            else {
-                this.IconState = false
-            }
+            this.IconState = this.Favourites.getFavourites.includes(this.$props.id);
         }
+    },
+    mounted() {
+        this.IconState = this.Favourites.getFavourites.includes(this.$props.id);
     }
 })
 </script>

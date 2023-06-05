@@ -52,8 +52,6 @@ export default defineComponent({
     display: grid;
     grid-template-columns: 6fr 2fr 3fr 1fr;
 
-
-
     input {
         outline: none;
         border: 2px solid $Orange;
