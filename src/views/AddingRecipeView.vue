@@ -198,8 +198,7 @@ main {
     border-radius: 8px;
 
     ul {
-      width: 100%;
-      height: 100%;
+      @include SquareSize(100%);
       display: flex;
       flex-direction: column;
       justify-content: center;

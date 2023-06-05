@@ -1,5 +1,5 @@
 type RecipeDetailType = {
-    detailRecipe: null | object
-}
+  detailRecipe: null | object;
+};
 
-export default RecipeDetailType
+export default RecipeDetailType;

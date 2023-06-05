@@ -1,5 +1,5 @@
 type FavouritesTypes = {
-    Favourites: Array<number>
-}
+  Favourites: Array<number>;
+};
 
-export default FavouritesTypes
+export default FavouritesTypes;

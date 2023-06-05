@@ -1,5 +1,5 @@
 type RecipeDatas = {
-    imageFullPath: undefined | string
-}
+  imageFullPath: undefined | string;
+};
 
-export default RecipeDatas
+export default RecipeDatas;
